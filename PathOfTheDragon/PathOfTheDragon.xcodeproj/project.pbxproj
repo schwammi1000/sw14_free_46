@@ -24,6 +24,12 @@
 		28D1283019389A8D00A027E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D1280B19389A8D00A027E1 /* UIKit.framework */; };
 		28D1283819389A8D00A027E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28D1283619389A8D00A027E1 /* InfoPlist.strings */; };
 		28D1283A19389A8D00A027E1 /* PathOfTheDragonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D1283919389A8D00A027E1 /* PathOfTheDragonTests.m */; };
+		47F1A3541938AE04004E0AAA /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F1A3511938AE04004E0AAA /* JSTileMap.m */; };
+		47F1A3551938AE05004E0AAA /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F1A3531938AE04004E0AAA /* LFCGzipUtility.m */; };
+		47F1A35A1938AF9E004E0AAA /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F1A3561938AF9E004E0AAA /* libz.1.1.3.dylib */; };
+		47F1A35B1938AF9E004E0AAA /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F1A3571938AF9E004E0AAA /* libz.1.2.5.dylib */; };
+		47F1A35C1938AF9E004E0AAA /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F1A3581938AF9E004E0AAA /* libz.1.dylib */; };
+		47F1A35D1938AF9E004E0AAA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F1A3591938AF9E004E0AAA /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +66,14 @@
 		28D1283519389A8D00A027E1 /* PathOfTheDragonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PathOfTheDragonTests-Info.plist"; sourceTree = "<group>"; };
 		28D1283719389A8D00A027E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		28D1283919389A8D00A027E1 /* PathOfTheDragonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathOfTheDragonTests.m; sourceTree = "<group>"; };
+		47F1A3501938AE04004E0AAA /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
+		47F1A3511938AE04004E0AAA /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
+		47F1A3521938AE04004E0AAA /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
+		47F1A3531938AE04004E0AAA /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
+		47F1A3561938AF9E004E0AAA /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		47F1A3571938AF9E004E0AAA /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		47F1A3581938AF9E004E0AAA /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = usr/lib/libz.1.dylib; sourceTree = SDKROOT; };
+		47F1A3591938AF9E004E0AAA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +81,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47F1A35A1938AF9E004E0AAA /* libz.1.1.3.dylib in Frameworks */,
+				47F1A35B1938AF9E004E0AAA /* libz.1.2.5.dylib in Frameworks */,
+				47F1A35C1938AF9E004E0AAA /* libz.1.dylib in Frameworks */,
+				47F1A35D1938AF9E004E0AAA /* libz.dylib in Frameworks */,
 				28D1280A19389A8D00A027E1 /* CoreGraphics.framework in Frameworks */,
 				28D1280C19389A8D00A027E1 /* UIKit.framework in Frameworks */,
 				28D1280E19389A8D00A027E1 /* SpriteKit.framework in Frameworks */,
@@ -111,6 +129,10 @@
 		28D1280619389A8D00A027E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47F1A3561938AF9E004E0AAA /* libz.1.1.3.dylib */,
+				47F1A3571938AF9E004E0AAA /* libz.1.2.5.dylib */,
+				47F1A3581938AF9E004E0AAA /* libz.1.dylib */,
+				47F1A3591938AF9E004E0AAA /* libz.dylib */,
 				28D1280719389A8D00A027E1 /* Foundation.framework */,
 				28D1280919389A8D00A027E1 /* CoreGraphics.framework */,
 				28D1280B19389A8D00A027E1 /* UIKit.framework */,
@@ -123,6 +145,10 @@
 		28D1280F19389A8D00A027E1 /* PathOfTheDragon */ = {
 			isa = PBXGroup;
 			children = (
+				47F1A3501938AE04004E0AAA /* JSTileMap.h */,
+				47F1A3511938AE04004E0AAA /* JSTileMap.m */,
+				47F1A3521938AE04004E0AAA /* LFCGzipUtility.h */,
+				47F1A3531938AE04004E0AAA /* LFCGzipUtility.m */,
 				28D1281819389A8D00A027E1 /* POTDAppDelegate.h */,
 				28D1281919389A8D00A027E1 /* POTDAppDelegate.m */,
 				28D1281B19389A8D00A027E1 /* Main.storyboard */,
@@ -266,8 +292,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				28D1281619389A8D00A027E1 /* main.m in Sources */,
+				47F1A3541938AE04004E0AAA /* JSTileMap.m in Sources */,
 				28D1281A19389A8D00A027E1 /* POTDAppDelegate.m in Sources */,
 				28D1282019389A8D00A027E1 /* POTDViewController.m in Sources */,
+				47F1A3551938AE05004E0AAA /* LFCGzipUtility.m in Sources */,
 				28D1282319389A8D00A027E1 /* POTDMyScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
