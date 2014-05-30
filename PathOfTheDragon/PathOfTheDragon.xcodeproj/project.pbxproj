@@ -477,6 +477,7 @@
 				28D1283F19389A8D00A027E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28D1284019389A8D00A027E1 /* Build configuration list for PBXNativeTarget "PathOfTheDragonTests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +486,7 @@
 				28D1284219389A8D00A027E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
