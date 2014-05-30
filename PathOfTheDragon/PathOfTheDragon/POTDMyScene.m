@@ -9,45 +9,48 @@
 #import "POTDMyScene.h"
 
 @implementation POTDMyScene
+int x = 0;
+int y = -14336;
 
 -(id)initWithSize:(CGSize)size
 {
-    if (self = [super initWithSize:size])
-    {
-        /* Setup your scene here */
-        
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-        
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
-        
-        [self addChild:myLabel];
-    }
+    if (!(self = [super initWithSize:size]))
+        return nil;
+    
+    
+    //Prepare Background
+    self.curFrame = CGRectMake (x,y,15360,15360);
+    self.imgView = [[UIImageView alloc] initWithFrame:self.curFrame];
+    self.mapbackground = [UIImage imageNamed:@"Map.png"];
+    self.imgView.image = self.mapbackground;
+    
+    
+    //Prepare Map
+    self.map = [JSTileMap mapNamed:@"Map.tmx"];
+    [self addChild:self.map];
+    self.map.position = CGPointMake(-500.0, -500.0);
+    
+    
+    
     return self;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    /* Called when a touch begins */
+    self.curFrame = CGRectMake (0,0,15360,15360);
+    self.imgView2 = [[UIImageView alloc] initWithFrame:self.curFrame];
+    self.imgView2.image = self.mapbackground;
+    [self.view addSubview:self.imgView2];
     
-    for (UITouch *touch in touches)
-    {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
+    
+    [self.imgView removeFromSuperview];
+    self.curFrame = CGRectMake (x,y,15360,15360);
+    self.imgView = [[UIImageView alloc] initWithFrame:self.curFrame];
+    self.imgView.image = self.mapbackground;
+    [self.view addSubview:self.imgView];
+    
+    x += 100;
+    y += 20;
 }
 
 -(void)update:(CFTimeInterval)currentTime

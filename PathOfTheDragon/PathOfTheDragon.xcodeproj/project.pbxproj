@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28828FCC1938B11800A04D9F /* Burg.png in Resources */ = {isa = PBXBuildFile; fileRef = 28828FC21938B11800A04D9F /* Burg.png */; };
+		28828FCD1938B11800A04D9F /* Castle1.png in Resources */ = {isa = PBXBuildFile; fileRef = 28828FC31938B11800A04D9F /* Castle1.png */; };
+		28828FCE1938B11800A04D9F /* Castle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 28828FC41938B11800A04D9F /* Castle2.png */; };
+		28828FCF1938B11800A04D9F /* Castle3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28828FC51938B11800A04D9F /* Castle3.jpg */; };
+		28828FD01938B11800A04D9F /* Grundgeruest.png in Resources */ = {isa = PBXBuildFile; fileRef = 28828FC61938B11800A04D9F /* Grundgeruest.png */; };
+		28828FD11938B11800A04D9F /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 28828FC71938B11800A04D9F /* Map.png */; };
+		28828FD31938B11800A04D9F /* Trees.png in Resources */ = {isa = PBXBuildFile; fileRef = 28828FC91938B11800A04D9F /* Trees.png */; };
+		28828FD41938B11800A04D9F /* Wald.png in Resources */ = {isa = PBXBuildFile; fileRef = 28828FCA1938B11800A04D9F /* Wald.png */; };
+		28828FD51938B11800A04D9F /* Wald2.png in Resources */ = {isa = PBXBuildFile; fileRef = 28828FCB1938B11800A04D9F /* Wald2.png */; };
+		28828FD91938B84600A04D9F /* Map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 28828FD81938B84600A04D9F /* Map.tmx */; };
 		28D1280819389A8D00A027E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D1280719389A8D00A027E1 /* Foundation.framework */; };
 		28D1280A19389A8D00A027E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D1280919389A8D00A027E1 /* CoreGraphics.framework */; };
 		28D1280C19389A8D00A027E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D1280B19389A8D00A027E1 /* UIKit.framework */; };
@@ -43,6 +53,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28828FC21938B11800A04D9F /* Burg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Burg.png; sourceTree = "<group>"; };
+		28828FC31938B11800A04D9F /* Castle1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Castle1.png; sourceTree = "<group>"; };
+		28828FC41938B11800A04D9F /* Castle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Castle2.png; sourceTree = "<group>"; };
+		28828FC51938B11800A04D9F /* Castle3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Castle3.jpg; sourceTree = "<group>"; };
+		28828FC61938B11800A04D9F /* Grundgeruest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grundgeruest.png; sourceTree = "<group>"; };
+		28828FC71938B11800A04D9F /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map.png; sourceTree = "<group>"; };
+		28828FC91938B11800A04D9F /* Trees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trees.png; sourceTree = "<group>"; };
+		28828FCA1938B11800A04D9F /* Wald.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wald.png; sourceTree = "<group>"; };
+		28828FCB1938B11800A04D9F /* Wald2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wald2.png; sourceTree = "<group>"; };
+		28828FD81938B84600A04D9F /* Map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Map.tmx; sourceTree = "<group>"; };
 		28D1280419389A8D00A027E1 /* PathOfTheDragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathOfTheDragon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28D1280719389A8D00A027E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		28D1280919389A8D00A027E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,6 +125,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28828FC01938B0F200A04D9F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28828FC11938B0FF00A04D9F /* Map */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		28828FC11938B0FF00A04D9F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				28828FC21938B11800A04D9F /* Burg.png */,
+				28828FD81938B84600A04D9F /* Map.tmx */,
+				28828FC41938B11800A04D9F /* Castle2.png */,
+				28828FC51938B11800A04D9F /* Castle3.jpg */,
+				28828FC61938B11800A04D9F /* Grundgeruest.png */,
+				28828FC91938B11800A04D9F /* Trees.png */,
+				28828FCA1938B11800A04D9F /* Wald.png */,
+				28828FCB1938B11800A04D9F /* Wald2.png */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		28D127FB19389A8D00A027E1 = {
 			isa = PBXGroup;
 			children = (
@@ -145,8 +188,11 @@
 		28D1280F19389A8D00A027E1 /* PathOfTheDragon */ = {
 			isa = PBXGroup;
 			children = (
+				28828FC01938B0F200A04D9F /* Resources */,
 				47F1A3501938AE04004E0AAA /* JSTileMap.h */,
 				47F1A3511938AE04004E0AAA /* JSTileMap.m */,
+				28828FC71938B11800A04D9F /* Map.png */,
+				28828FC31938B11800A04D9F /* Castle1.png */,
 				47F1A3521938AE04004E0AAA /* LFCGzipUtility.h */,
 				47F1A3531938AE04004E0AAA /* LFCGzipUtility.m */,
 				28D1281819389A8D00A027E1 /* POTDAppDelegate.h */,
@@ -270,9 +316,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				28D1281419389A8D00A027E1 /* InfoPlist.strings in Resources */,
+				28828FCF1938B11800A04D9F /* Castle3.jpg in Resources */,
+				28828FD11938B11800A04D9F /* Map.png in Resources */,
+				28828FD31938B11800A04D9F /* Trees.png in Resources */,
+				28828FCD1938B11800A04D9F /* Castle1.png in Resources */,
+				28828FD51938B11800A04D9F /* Wald2.png in Resources */,
+				28828FD91938B84600A04D9F /* Map.tmx in Resources */,
 				28D1282719389A8D00A027E1 /* Images.xcassets in Resources */,
+				28828FCC1938B11800A04D9F /* Burg.png in Resources */,
+				28828FD01938B11800A04D9F /* Grundgeruest.png in Resources */,
 				28D1282519389A8D00A027E1 /* Spaceship.png in Resources */,
 				28D1281D19389A8D00A027E1 /* Main.storyboard in Resources */,
+				28828FD41938B11800A04D9F /* Wald.png in Resources */,
+				28828FCE1938B11800A04D9F /* Castle2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
