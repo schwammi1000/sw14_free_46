@@ -95,7 +95,9 @@
 				28D1280619389A8D00A027E1 /* Frameworks */,
 				28D1280519389A8D00A027E1 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		28D1280519389A8D00A027E1 /* Products */ = {
 			isa = PBXGroup;
