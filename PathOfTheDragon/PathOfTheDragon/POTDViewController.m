@@ -20,8 +20,15 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
+    // Set background of the view
+    //CGRect currentFrame = CGRectMake(0,0,15360,15360);
+    //UIImageView *imageView = [[UIImageView alloc] initWithFrame:currentFrame];
+    //UIImage *background = [UIImage imageNamed:@"Map.png"];
+    //imageView.image = background;
+    //[self.view addSubview:imageView];
+    
     // Create and configure the scene.
-    SKScene * scene = [POTDMyScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [[POTDMyScene alloc] initWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

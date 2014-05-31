@@ -11,10 +11,7 @@
 
 @interface POTDMyScene : SKScene
 
-@property (nonatomic, strong) JSTileMap *map;
-@property (nonatomic, strong) UIImageView* imgView;
-@property (nonatomic, strong) UIImageView* imgView2;
-@property (nonatomic, strong) UIImage* mapbackground;
-@property CGRect curFrame;
+@property (nonatomic, strong) JSTileMap *top;
+@property (nonatomic, strong) SKSpriteNode* background;
 
 @end
