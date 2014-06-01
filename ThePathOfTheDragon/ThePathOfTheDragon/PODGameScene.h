@@ -7,12 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "PODCastleNode.h"
-#import "PODMapNode.h"
+#import "PODGameNode.h"
 
 @interface PODGameScene : SKScene
 
-@property SKNode *root;
-@property SKTextureAtlas *atlas;
+@property PODGameNode *game;
 
 @end

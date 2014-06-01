@@ -10,7 +10,7 @@
 
 @implementation PODCastleNode
 
-+(instancetype)castleWithSize:(CGSize)size Complexity:(NSNumber*)complexity
++(instancetype)createCastleWithSize:(CGSize)size NrOfTowers:(int)nrTowers
 {
     PODCastleNode *castle = [[PODCastleNode alloc] init];
     

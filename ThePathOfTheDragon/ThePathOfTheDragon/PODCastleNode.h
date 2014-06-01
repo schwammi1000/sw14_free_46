@@ -12,6 +12,6 @@
 
 @property SKTextureAtlas *atlas;
 
-+(instancetype)castleWithSize:(CGSize)size Complexity:(NSNumber*)complexity;
++(instancetype)createCastleWithSize:(CGSize)size NrOfTowers:(int)nrTowers;
 
 @end
