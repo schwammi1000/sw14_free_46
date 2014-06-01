@@ -28,6 +28,9 @@
 		2825D298193A37BA009EEC1A /* Background.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2825D296193A37BA009EEC1A /* Background.atlas */; };
 		2825D299193A37BA009EEC1A /* Castle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2825D297193A37BA009EEC1A /* Castle.atlas */; };
 		285A00BE193B593600651177 /* PODRiverNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00BD193B593600651177 /* PODRiverNode.m */; };
+		285A00C1193B9E8800651177 /* PODMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C0193B9E8800651177 /* PODMapNode.m */; };
+		285A00C4193BB4B700651177 /* PODGameNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C3193BB4B700651177 /* PODGameNode.m */; };
+		285A00C8193BB9FE00651177 /* PODUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C7193BB9FE00651177 /* PODUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,12 @@
 		2825D297193A37BA009EEC1A /* Castle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Castle.atlas; sourceTree = "<group>"; };
 		285A00BC193B593600651177 /* PODRiverNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODRiverNode.h; sourceTree = "<group>"; };
 		285A00BD193B593600651177 /* PODRiverNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODRiverNode.m; sourceTree = "<group>"; };
+		285A00BF193B9E8800651177 /* PODMapNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODMapNode.h; sourceTree = "<group>"; };
+		285A00C0193B9E8800651177 /* PODMapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODMapNode.m; sourceTree = "<group>"; };
+		285A00C2193BB4B700651177 /* PODGameNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODGameNode.h; sourceTree = "<group>"; };
+		285A00C3193BB4B700651177 /* PODGameNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODGameNode.m; sourceTree = "<group>"; };
+		285A00C6193BB9FE00651177 /* PODUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODUtility.h; sourceTree = "<group>"; };
+		285A00C7193BB9FE00651177 /* PODUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODUtility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +145,7 @@
 				2825D283193A3675009EEC1A /* Nodes */,
 				2825D282193A364D009EEC1A /* View */,
 				2825D281193A3644009EEC1A /* Scenes */,
+				285A00C5193BB9CD00651177 /* Helper */,
 				2825D259193A3613009EEC1A /* Main.storyboard */,
 				2825D262193A3613009EEC1A /* Spaceship.png */,
 				2825D264193A3613009EEC1A /* Images.xcassets */,
@@ -200,8 +210,21 @@
 				2825D291193A373A009EEC1A /* PODCastleNode.m */,
 				285A00BC193B593600651177 /* PODRiverNode.h */,
 				285A00BD193B593600651177 /* PODRiverNode.m */,
+				285A00BF193B9E8800651177 /* PODMapNode.h */,
+				285A00C0193B9E8800651177 /* PODMapNode.m */,
+				285A00C2193BB4B700651177 /* PODGameNode.h */,
+				285A00C3193BB4B700651177 /* PODGameNode.m */,
 			);
 			name = Nodes;
+			sourceTree = "<group>";
+		};
+		285A00C5193BB9CD00651177 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				285A00C6193BB9FE00651177 /* PODUtility.h */,
+				285A00C7193BB9FE00651177 /* PODUtility.m */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,7 +330,10 @@
 			files = (
 				2825D28C193A3715009EEC1A /* PODViewController.m in Sources */,
 				2825D28F193A3722009EEC1A /* PODAppDelegate.m in Sources */,
+				285A00C8193BB9FE00651177 /* PODUtility.m in Sources */,
 				285A00BE193B593600651177 /* PODRiverNode.m in Sources */,
+				285A00C4193BB4B700651177 /* PODGameNode.m in Sources */,
+				285A00C1193B9E8800651177 /* PODMapNode.m in Sources */,
 				2825D254193A3613009EEC1A /* main.m in Sources */,
 				2825D292193A373A009EEC1A /* PODCastleNode.m in Sources */,
 				2825D295193A3795009EEC1A /* PODGameScene.m in Sources */,

@@ -25,17 +25,16 @@
     [self.root setPosition:CGPointMake(0.0, 0.0)];
     
     //Create map
-    SKNode *map = [self createMapWithSize:CGSizeMake(40, 40) Tilesize:CGSizeMake(32, 32) Texture:@"Desert"];
+    PODMapNode *map = [PODMapNode createMapWithSize:CGSizeMake(16, 16) Tilesize:CGSizeMake(1024, 1024) Texture:@"DesertXLarge"];
     
     //Add map to root
     [self.root addChild:map];
     
     //Create castle
     PODCastleNode *castle = [PODCastleNode castleWithSize:CGSizeMake(0, 0) Complexity:0];
-    castle.position = CGPointMake(200, 200);
     
-    //Add castle to root
-    [self.root addChild:castle];
+    //Add castle to map
+    [map addCastle:castle At:CGPointMake(200, 200)];
     
     //Add root to scene
     [self addChild:self.root];
@@ -55,28 +54,7 @@
 
 -(void)didMoveToView:(SKView *)view
 {
-    printf("Finished Loading\n");
-}
 
--(SKNode *)createMapWithSize:(CGSize)mapSize Tilesize:(CGSize)tileSize Texture:(NSString *)name
-{
-    SKNode *map = [[SKNode alloc] init];
-    SKTexture *texture = [self.atlas textureNamed:name];
-    
-    for(int x = 0; x < mapSize.width; x++)
-    {
-        for(int y = 0; y < mapSize.height; y++)
-        {
-            SKSpriteNode *node = [SKSpriteNode spriteNodeWithTexture:texture size:tileSize];
-            [node setAnchorPoint:CGPointMake(0.0, 0.0)];
-            [node setPosition:CGPointMake(x * tileSize.width, y * tileSize.height)];
-            [map addChild:node];
-        }
-    }
-    
-    [map setPosition:CGPointMake(0, 0)];
-    
-    return map;
 }
 
 @end
