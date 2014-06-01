@@ -26,6 +26,9 @@
     game.hero.anchorPoint = CGPointMake(0, 0);
     game.hero.position = CGPointMake(384, 512);
     
+    //Add River
+    [game.map addRiver:[PODRiverNode createRiver:1280] At:CGPointMake(0, 0)];
+    
     //Add Castle
     [game.map addCastle:[PODCastleNode createCastleWithSize:CGSizeMake(500, 500) NrOfTowers:4] At:CGPointMake(320, 64)];
     

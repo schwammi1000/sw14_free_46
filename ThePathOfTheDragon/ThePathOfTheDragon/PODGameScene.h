@@ -7,6 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "PODCastleNode.h"
+#import "PODRiverNode.h"
 #import "PODGameNode.h"
 
 @interface PODGameScene : SKScene

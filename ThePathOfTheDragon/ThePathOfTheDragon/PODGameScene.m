@@ -42,7 +42,7 @@
 
 -(void)update:(CFTimeInterval)currentTime
 {
-
+    
 }
 
 -(void)didMoveToView:(SKView *)view

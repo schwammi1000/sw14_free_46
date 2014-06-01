@@ -10,4 +10,7 @@
 
 @interface PODRiverNode : SKNode
 
+@property SKTextureAtlas *atlas;
++(instancetype)createRiver: (int)start_point;
+
 @end

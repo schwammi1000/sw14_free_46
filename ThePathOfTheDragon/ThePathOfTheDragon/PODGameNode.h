@@ -9,6 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "PODMapNode.h"
 #import "PODCastleNode.h"
+#import "PODRiverNode.h"
 
 @interface PODGameNode : SKNode
 
