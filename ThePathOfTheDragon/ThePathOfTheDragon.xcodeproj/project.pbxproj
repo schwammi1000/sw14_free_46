@@ -27,6 +27,7 @@
 		2825D295193A3795009EEC1A /* PODGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2825D294193A3795009EEC1A /* PODGameScene.m */; };
 		2825D298193A37BA009EEC1A /* Background.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2825D296193A37BA009EEC1A /* Background.atlas */; };
 		2825D299193A37BA009EEC1A /* Castle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2825D297193A37BA009EEC1A /* Castle.atlas */; };
+		285A00BE193B593600651177 /* PODRiverNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00BD193B593600651177 /* PODRiverNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		2825D294193A3795009EEC1A /* PODGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODGameScene.m; sourceTree = "<group>"; };
 		2825D296193A37BA009EEC1A /* Background.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Background.atlas; sourceTree = "<group>"; };
 		2825D297193A37BA009EEC1A /* Castle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Castle.atlas; sourceTree = "<group>"; };
+		285A00BC193B593600651177 /* PODRiverNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODRiverNode.h; sourceTree = "<group>"; };
+		285A00BD193B593600651177 /* PODRiverNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODRiverNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,8 @@
 			children = (
 				2825D290193A373A009EEC1A /* PODCastleNode.h */,
 				2825D291193A373A009EEC1A /* PODCastleNode.m */,
+				285A00BC193B593600651177 /* PODRiverNode.h */,
+				285A00BD193B593600651177 /* PODRiverNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 			files = (
 				2825D28C193A3715009EEC1A /* PODViewController.m in Sources */,
 				2825D28F193A3722009EEC1A /* PODAppDelegate.m in Sources */,
+				285A00BE193B593600651177 /* PODRiverNode.m in Sources */,
 				2825D254193A3613009EEC1A /* main.m in Sources */,
 				2825D292193A373A009EEC1A /* PODCastleNode.m in Sources */,
 				2825D295193A3795009EEC1A /* PODGameScene.m in Sources */,
@@ -513,6 +519,7 @@
 				2825D27D193A3614009EEC1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2825D27E193A3614009EEC1A /* Build configuration list for PBXNativeTarget "ThePathOfTheDragonTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +528,7 @@
 				2825D280193A3614009EEC1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
