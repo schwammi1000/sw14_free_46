@@ -32,9 +32,9 @@
     CGVector delta = CGVectorMake(location.x - self.game.hero.position.x, location.y - self.game.hero.position.y);
     
     if(fabs(delta.dx) >= fabs(delta.dy))
-        delta = CGVectorMake(32 * delta.dx/fabs(delta.dx), 0);
+        delta = CGVectorMake(128 * delta.dx/fabs(delta.dx), 0);
     else
-        delta = CGVectorMake(0, 32 * delta.dy/fabs(delta.dy));
+        delta = CGVectorMake(0, 128 * delta.dy/fabs(delta.dy));
     
     
     [self.game moveHeroRelative:delta];

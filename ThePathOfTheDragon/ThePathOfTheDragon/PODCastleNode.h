@@ -12,6 +12,7 @@
 
 @property SKTextureAtlas *atlas;
 
-+(instancetype)createCastleWithSize:(CGSize)size NrOfTowers:(int)nrTowers;
++(instancetype)getPreassembledCastleWithNr:(int)number;
++(instancetype)createCastleWithCode:(NSString *)code;
 
 @end

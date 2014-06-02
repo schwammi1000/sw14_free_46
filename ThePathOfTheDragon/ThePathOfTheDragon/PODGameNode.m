@@ -21,7 +21,7 @@
     game.map = [PODMapNode createMapWithSize:CGSizeMake(16, 16) Tilesize:CGSizeMake(1024, 1024) Texture:@"DesertXLarge"];
     
     //Create Hero
-    UIColor *color = [UIColor colorWithRed:255 green:0 blue:0 alpha:1];
+    UIColor *color = [UIColor colorWithRed:255 green:0 blue:0 alpha:0];
     game.hero = [SKSpriteNode spriteNodeWithColor:color size:CGSizeMake(32, 32)];
     game.hero.anchorPoint = CGPointMake(0, 0);
     game.hero.position = CGPointMake(384, 512);
@@ -29,8 +29,13 @@
     //Add River
     [game.map addRiver:[PODRiverNode createRiver:1280] At:CGPointMake(0, 0)];
     
-    //Add Castle
-    [game.map addCastle:[PODCastleNode createCastleWithSize:CGSizeMake(500, 500) NrOfTowers:4] At:CGPointMake(320, 64)];
+    //Add Castles
+    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:1] At:CGPointMake(3200, 640)];
+    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:2] At:CGPointMake(3200, 1600)];
+    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:3] At:CGPointMake(3200, 4800)];
+    
+    //game.map.xScale = 0.25; game.map.yScale = 0.25;
+    //game.map.position = CGPointMake(-3200, -4800);
     
     
     [game addChild:game.map];
