@@ -11,6 +11,6 @@
 @interface PODRiverNode : SKNode
 
 @property SKTextureAtlas *atlas;
-+(instancetype)createRiver: (int)start_point;
++(instancetype)createRiver: (int)start_point TileSize: (int)tile_size;
 
 @end

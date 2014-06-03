@@ -13,12 +13,14 @@
 int WIDTH_OF_RIVER = 5;
 
 
-+(instancetype)createRiver:(int)start_point
++(instancetype)createRiver:(int)map_size TileSize: (int)tile_size
 {
     int start_point_x;
-    int start_point_y;
-    int start_side = 0;
-    int finish_side = 0;
+    int calc_y = 0;
+    int direction = 0;
+    int range = 0;
+    int length = 0;
+    int direction_old = 0;
     CGPoint point;
     
     
@@ -27,34 +29,147 @@ int WIDTH_OF_RIVER = 5;
     
     if(!river_node)
         return nil;
-    
-    //Define Start and Finish
-    [river_node calculateStartAndEndSide:&start_side End:&finish_side];
-    printf("Zufallsseite: %d ... %d\n", start_side, finish_side);
-    
-    
-    //Create Start_Point of river
-    //start_point_x = ((arc4random() % start_point) + 1);
-    start_point_x = 251;
-    printf("Zufallszahl: %d\n", start_point_x);
+
+    start_point_x = map_size/2; //256;
     
     //Create atlas
     river_node.atlas = [SKTextureAtlas atlasNamed:@"Background"];
     
-    //Create vertical river
-    point = [river_node verticalConstruct:start_point_x YValue:0 Length:20];
+    range = 10;
     
-    //Create horizontal river
-    point = [river_node horizontalConstruct:point.x YValue:point.y Length:20];
+    point = CGPointMake(start_point_x, 0);
     
-    //Create vertical river
-    point = [river_node verticalConstruct:point.x YValue:point.y Length:20];
+    printf("********** START FUNCTION *********\n");
     
+    while ((point.y < map_size) && (point.x < map_size) && (point.x > 0))
+    {
+        direction = [river_node calculateDirection:direction_old];
+        length = [river_node randomValuesForRiverLengthWithRange: range];
+        
+        //Call check method here
+        [river_node checkRiverDirection:direction WithLength:&length MapSize:map_size Point:point TileSize:tile_size];
+        
+        
+        if(direction == 1)
+        {
+            if(direction_old == 3)
+            {
+              point = [river_node verticalConstruct:point.x YValue:point.y Length:length Type:0 TileSize:tile_size];
+              //Draw left form for left- direction
+            }
+            else
+            {
+              point = [river_node verticalConstruct:point.x YValue:point.y Length:length Type:1 TileSize:tile_size];
+              //Draw right form for up and right- direction
+            }
+                
+            calc_y = point.y;
+            printf("****UP****: %d\n", length);
+        }
+        else if(direction == 2)
+        {
+            point = [river_node horizontalConstruct:point.x YValue:point.y Length:length Type:1 TileSize:tile_size];
+            calc_y = point.y;
+            printf("****RIGHT****: %d\n", length);
+        }
+        else if (direction == 3)
+        {
+            point.x += tile_size * WIDTH_OF_RIVER;
+            point = [river_node horizontalConstruct:point.x YValue:point.y Length:length Type:0 TileSize:tile_size];
+            calc_y = point.y;
+            printf("****LEFT****\n");
+        }
+        
+        direction_old = direction;
+    }
+    
+    
+    printf("****CALC****:\n X= %f ... Y= %f\n",point.x, point.y);
+    printf("MapSize: %d\n", map_size);
+    
+    //Just for testing river
+    /*
+    printf("++++CGPoint: %f ... %f\n", point.x, point.y);
+    point = [river_node horizontalConstruct:point.x YValue:point.y Length:3 Type:1];
+    printf("++++CGPoint: %f ... %f\n", point.x, point.y);
+    point = [river_node horizontalConstruct:point.x YValue:point.y Length:3 Type:1];
+    printf("++++CGPoint: %f ... %f\n", point.x, point.y);
+    point = [river_node horizontalConstruct:point.x YValue:point.y Length:3 Type:1];
+    printf("++++CGPoint: %f ... %f\n", point.x, point.y);
+    
+    point = [river_node verticalConstruct:point.x YValue:point.y Length:10 Type:1];
+    printf("++++CGPoint: %f ... %f\n", point.x, point.y);
+    point = [river_node horizontalConstruct:point.x YValue:point.y Length:3 Type:1];
+    printf("++++CGPoint: %f ... %f\n", point.x, point.y);
+    point = [river_node verticalConstruct:point.x YValue:point.y Length:10 Type:1];
+    printf("++++CGPoint: %f ... %f\n", point.x, point.y);
+    */
     return river_node;
     
 }
 
--(CGPoint)verticalConstruct: (int)start_point_x YValue: (int)start_point_y Length: (int)length
+-(void)checkRiverDirection: (int)direction WithLength: (int*)length MapSize: (int)map_size Point: (CGPoint)point TileSize: (int)tile_size
+{
+    if((direction == 2) && ((((*length) * tile_size) + point.x) > map_size))
+    {
+        *length = (map_size - point.x) / tile_size;
+        printf("Map to small: X\n Point.x= %f ... length= %d ... mapsize= %d\n\n", point.x, *length, map_size);
+    }
+    else if((direction == 1) && ((((*length) * tile_size) + point.y) > map_size))
+    {
+        *length = (map_size - point.y) / tile_size;
+        printf("Map to small: Y\n Point.y= %f ... length= %d ... mapsize= %d\n\n", point.y, *length, map_size);
+    }
+    else if((direction == 3) && ((point.x - ((*length) * tile_size)) < 0))
+    {
+        *length = point.x / tile_size;
+        printf("Map to small->0: X\n Point.y= %f ... length= %d ... mapsize= %d\n\n", point.y, *length, map_size);
+    }
+}
+
+-(int)randomValuesForRiverLengthWithRange: (int)range
+{
+    int value;
+
+    value = ((arc4random() % range) + 3);
+    
+    return value;
+}
+
+-(int)calculateDirection: (int)direction_old
+{
+    //Calculate Direction: 1...up
+    //                     2...right
+    //                     3...left
+    
+    int diretion;
+    
+    if(direction_old == 2)
+    {
+        do
+        {
+            diretion = ((arc4random() % 3) + 1);
+        }
+        while(diretion == 3);
+    }
+    else if(direction_old == 3)
+    {
+        do
+        {
+            diretion = ((arc4random() % 3) + 1);
+        }
+        while(diretion == 2);
+    }
+    else
+    {
+        diretion = ((arc4random() % 3) + 1);
+    }
+    
+    return diretion;
+    
+}
+
+-(CGPoint)verticalConstruct: (int)start_point_x YValue: (int)start_point_y Length: (int)length Type: (int)type TileSize: (int)tile_size
 {
     int x = start_point_x;
     int y = start_point_y;
@@ -66,24 +181,37 @@ int WIDTH_OF_RIVER = 5;
         
         for(int j = 0; j < WIDTH_OF_RIVER; j++)
         {
-            SKSpriteNode *river_sprite = [SKSpriteNode spriteNodeWithTexture:[self.atlas textureNamed:@"Water"]size:CGSizeMake(32, 32)];
-                [river_sprite setAnchorPoint:CGPointMake(0.0, 0.0)];
+            SKSpriteNode *river_sprite = [SKSpriteNode spriteNodeWithTexture:[self.atlas textureNamed:@"Water"]size:CGSizeMake(tile_size, tile_size)];
+            
+            if(type)
+              [river_sprite setAnchorPoint:CGPointMake(0.0, 0.0)];
+            else
+              [river_sprite setAnchorPoint:CGPointMake(1.0, 0.0)];
 
             [river_sprite setPosition:CGPointMake(x, y)];
             [self addChild:river_sprite];
             
-            x += 32;
+            if(type)
+              x += tile_size;
+            else
+              x -= tile_size;
         }
-        y += 32;
+        y += tile_size;
     }
     
-    last_point = CGPointMake((x - 32*WIDTH_OF_RIVER), y);
-    //last_point = CGPointMake(x, y);
-    printf("CGPOINT_VERT: %f ... %f\n", last_point.x, last_point.y);
+    if(type)
+      last_point = CGPointMake((x - tile_size*WIDTH_OF_RIVER), y);
+    else
+    {
+      last_point = CGPointMake(x, y);
+      printf("----- LastPoint: %f ... %f\n", last_point.x, last_point.y);
+    }
+    
+    
     return last_point;
 }
 
--(CGPoint)horizontalConstruct: (int)start_point_x YValue: (int)start_point_y Length: (int)length
+-(CGPoint)horizontalConstruct: (int)start_point_x YValue: (int)start_point_y Length: (int)length Type: (int)type TileSize: (int)tile_size
 {
     int x = start_point_x;
     int y = start_point_y;
@@ -95,39 +223,35 @@ int WIDTH_OF_RIVER = 5;
         
         for(int j = 0; j < WIDTH_OF_RIVER; j++)
         {
-            SKSpriteNode *river_sprite = [SKSpriteNode spriteNodeWithTexture:[self.atlas textureNamed:@"Water"]size:CGSizeMake(32, 32)];
-            [river_sprite setAnchorPoint:CGPointMake(0.0, 0.0)];
+            SKSpriteNode *river_sprite = [SKSpriteNode spriteNodeWithTexture:[self.atlas textureNamed:@"Water"]size:CGSizeMake(tile_size, tile_size)];
+            
+            if(type)
+              [river_sprite setAnchorPoint:CGPointMake(0.0, 0.0)];
+            else
+              [river_sprite setAnchorPoint:CGPointMake(1.0, 0.0)];
             
             [river_sprite setPosition:CGPointMake(x, y)];
             [self addChild:river_sprite];
             
-            y += 32;
+            y += tile_size;
         }
-        x += 32;
+        
+        if(type)
+          x += tile_size;
+        else
+          x -= tile_size;
     }
     
-    last_point = CGPointMake(x, (y - 32*WIDTH_OF_RIVER));
-    //last_point = CGPointMake(x, y);
-    printf("CGPOINT_HOR: %f ... %f\n", last_point.x, last_point.y);
+    if(type)
+      last_point = CGPointMake(x, (y - tile_size * WIDTH_OF_RIVER));
+    else
+    {
+        last_point = CGPointMake(x, (y - tile_size * WIDTH_OF_RIVER));
+        printf("----- LastPoint: %f ... %f\n", last_point.x, last_point.y);
+    }
+
     return last_point;
     
-}
-
--(void)calculateStartAndEndSide: (int*)start_side End: (int*)finish_side
-{
-    //Calculate Start: 1...left Side
-    //                 2...right Side
-    //                 3...bottom
-    //                 4...top
-    
-    *start_side = ((arc4random() % 4) + 1);
-    
-    do
-    {
-       *finish_side = ((arc4random() % 4) + 1);
-    }
-    while (*start_side == *finish_side);
-
 }
 
 @end
