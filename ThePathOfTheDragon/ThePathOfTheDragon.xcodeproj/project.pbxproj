@@ -31,6 +31,7 @@
 		285A00C1193B9E8800651177 /* PODMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C0193B9E8800651177 /* PODMapNode.m */; };
 		285A00C4193BB4B700651177 /* PODGameNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C3193BB4B700651177 /* PODGameNode.m */; };
 		285A00C8193BB9FE00651177 /* PODUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C7193BB9FE00651177 /* PODUtility.m */; };
+		479F2E45193DD5E8001DB1EC /* spriteHero.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 479F2E44193DD5E8001DB1EC /* spriteHero.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		285A00C3193BB4B700651177 /* PODGameNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODGameNode.m; sourceTree = "<group>"; };
 		285A00C6193BB9FE00651177 /* PODUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODUtility.h; sourceTree = "<group>"; };
 		285A00C7193BB9FE00651177 /* PODUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODUtility.m; sourceTree = "<group>"; };
+		479F2E44193DD5E8001DB1EC /* spriteHero.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = spriteHero.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 		2825D24E193A3613009EEC1A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				479F2E44193DD5E8001DB1EC /* spriteHero.atlas */,
 				2825D296193A37BA009EEC1A /* Background.atlas */,
 				2825D297193A37BA009EEC1A /* Castle.atlas */,
 				2825D24F193A3613009EEC1A /* ThePathOfTheDragon-Info.plist */,
@@ -306,6 +309,7 @@
 			files = (
 				2825D252193A3613009EEC1A /* InfoPlist.strings in Resources */,
 				2825D265193A3613009EEC1A /* Images.xcassets in Resources */,
+				479F2E45193DD5E8001DB1EC /* spriteHero.atlas in Resources */,
 				2825D263193A3613009EEC1A /* Spaceship.png in Resources */,
 				2825D298193A37BA009EEC1A /* Background.atlas in Resources */,
 				2825D25B193A3613009EEC1A /* Main.storyboard in Resources */,

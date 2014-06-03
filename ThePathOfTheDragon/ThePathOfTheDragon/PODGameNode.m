@@ -21,10 +21,18 @@
     game.map = [PODMapNode createMapWithSize:CGSizeMake(16, 16) Tilesize:CGSizeMake(1024, 1024) Texture:@"DesertXLarge"];
     
     //Create Hero
-    UIColor *color = [UIColor colorWithRed:255 green:0 blue:0 alpha:0];
+    /*UIColor *color = [UIColor colorWithRed:255 green:0 blue:0 alpha:1];
     game.hero = [SKSpriteNode spriteNodeWithColor:color size:CGSizeMake(32, 32)];
     game.hero.anchorPoint = CGPointMake(0, 0);
+    game.hero.position = CGPointMake(384, 512);*/
+    
+    [game initalizeHero];
+    
+    SKTexture *temp = game.hero_walking_frames_down[0];
+    game.hero = [SKSpriteNode spriteNodeWithTexture:temp size:CGSizeMake(32, 32)];
+    game.hero.anchorPoint = CGPointMake(0, 0);
     game.hero.position = CGPointMake(384, 512);
+    
     
     //Add River
     [game.map addRiver:[PODRiverNode createRiver:(1024*16)TileSize:32] At:CGPointMake(0, 0)];
@@ -46,7 +54,78 @@
 
 -(void)moveHeroRelative:(CGVector)movement
 {
-    self.map.position = CGPointMake(self.map.position.x - movement.dx, self.map.position.y - movement.dy);
+    //self.map.position = CGPointMake(self.map.position.x - movement.dx, self.map.position.y - movement.dy);
+    CGPoint point_to_move = CGPointMake(self.map.position.x - movement.dx, self.map.position.y - movement.dy);
+    
+    [self.map runAction:[SKAction moveTo:point_to_move duration:0.8f]];
+    
+    if(movement.dx > 0)
+    {
+        [self.hero runAction:[SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_right timePerFrame:0.2f resize:NO restore:YES] count:1]];
+    }
+    else if(movement.dx < 0)
+    {
+       [self.hero runAction:[SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_left timePerFrame:0.2f resize:NO restore:YES] count:1]];
+    }
+    else if(movement.dy > 0)
+    {
+        [self.hero runAction:[SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_up timePerFrame:0.2f resize:NO restore:YES] count:1]];
+    }
+    else if (movement.dy < 0)
+    {
+        [self.hero runAction:[SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_down timePerFrame:0.2f resize:NO restore:YES] count:1]];
+    }
+    
+}
+
+-(void)initalizeHero
+{
+    NSMutableArray *walking_frame_down = [NSMutableArray array];
+    NSMutableArray *walking_frame_up = [NSMutableArray array];
+    NSMutableArray *walking_frame_left = [NSMutableArray array];
+    NSMutableArray *walking_frame_right = [NSMutableArray array];
+    
+    
+    SKTextureAtlas *hero_walking_atlas = [SKTextureAtlas atlasNamed:@"spriteHero"];
+    
+    //Add animations for down- movement
+    for (int i = 1; i <= 5; i++)
+    {
+        NSString *animation_name = [NSString stringWithFormat:@"animation_%d", i];
+        SKTexture *obj = [hero_walking_atlas textureNamed:animation_name];
+        [walking_frame_down addObject:obj];
+    }
+    self.hero_walking_frames_down = walking_frame_down;
+    
+    
+    //Add animations for up- movement
+    for (int i = 11; i <= 15; i++)
+    {
+        NSString *animation_name = [NSString stringWithFormat:@"animation_%d", i];
+        SKTexture *obj = [hero_walking_atlas textureNamed:animation_name];
+        [walking_frame_up addObject:obj];
+    }
+    self.hero_walking_frames_up = walking_frame_up;
+    
+    
+    //Add animations for left- movement
+    for (int i = 6; i <= 10; i++)
+    {
+        NSString *animation_name = [NSString stringWithFormat:@"animation_%d", i];
+        SKTexture *obj = [hero_walking_atlas textureNamed:animation_name];
+        [walking_frame_left addObject:obj];
+    }
+    self.hero_walking_frames_left = walking_frame_left;
+    
+    
+    //Add animations for right- movement
+    for (int i = 16; i <= 20; i++)
+    {
+        NSString *animation_name = [NSString stringWithFormat:@"animation_%d", i];
+        SKTexture *obj = [hero_walking_atlas textureNamed:animation_name];
+        [walking_frame_right addObject:obj];
+    }
+    self.hero_walking_frames_right = walking_frame_right;
 }
 
 @end

@@ -15,6 +15,11 @@
 
 @property PODMapNode *map;
 @property SKSpriteNode *hero;
+@property NSArray *hero_walking_frames_left;
+@property NSArray *hero_walking_frames_right;
+@property NSArray *hero_walking_frames_up;
+@property NSArray *hero_walking_frames_down;
+
 
 +(instancetype)createGame;
 -(void)moveHeroRelative:(CGVector)movement;
