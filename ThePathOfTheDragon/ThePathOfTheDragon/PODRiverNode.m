@@ -196,6 +196,11 @@ int WIDTH_OF_RIVER = 5;
               x += tile_size;
             else
               x -= tile_size;
+            
+            if((j == 0) || (j == (WIDTH_OF_RIVER - 1)))
+            {
+                river_sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:river_sprite.size];
+            }
         }
         y += tile_size;
     }
@@ -236,6 +241,10 @@ int WIDTH_OF_RIVER = 5;
             [self addChild:river_sprite];
             
             y += tile_size;
+            if((j == 0) || (j == (WIDTH_OF_RIVER - 1)))
+            {
+                river_sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:river_sprite.size];
+            }
         }
         
         if(type)
