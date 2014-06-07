@@ -11,7 +11,7 @@
 #import "PODCastleNode.h"
 #import "PODRiverNode.h"
 
-@interface PODGameNode : SKNode
+@interface PODGameNode : SKSpriteNode
 
 @property PODMapNode *map;
 @property SKSpriteNode *hero;

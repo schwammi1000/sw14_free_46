@@ -14,5 +14,6 @@
 @interface PODGameScene : SKScene
 
 @property PODGameNode *game;
+@property SKLabelNode *label;
 
 @end

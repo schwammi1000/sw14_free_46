@@ -10,7 +10,7 @@
 #import "PODCastleNode.h"
 #import "PODRiverNode.h"
 
-@interface PODMapNode : SKNode
+@interface PODMapNode : SKSpriteNode
 
 @property SKNode *background;
 @property SKNode *castles;

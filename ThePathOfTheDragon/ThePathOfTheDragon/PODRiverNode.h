@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface PODRiverNode : SKNode
+@interface PODRiverNode : SKSpriteNode
 
 @property SKTextureAtlas *atlas;
 +(instancetype)createRiver: (int)start_point TileSize: (int)tile_size;

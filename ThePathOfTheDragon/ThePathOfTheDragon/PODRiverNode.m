@@ -39,7 +39,7 @@ int WIDTH_OF_RIVER = 5;
     
     point = CGPointMake(start_point_x, 0);
     
-    printf("********** START FUNCTION *********\n");
+    //printf("********** START FUNCTION *********\n");
     
     while ((point.y < map_size) && (point.x < map_size) && (point.x > 0))
     {
@@ -64,28 +64,28 @@ int WIDTH_OF_RIVER = 5;
             }
                 
             calc_y = point.y;
-            printf("****UP****: %d\n", length);
+            //printf("****UP****: %d\n", length);
         }
         else if(direction == 2)
         {
             point = [river_node horizontalConstruct:point.x YValue:point.y Length:length Type:1 TileSize:tile_size];
             calc_y = point.y;
-            printf("****RIGHT****: %d\n", length);
+            //printf("****RIGHT****: %d\n", length);
         }
         else if (direction == 3)
         {
             point.x += tile_size * WIDTH_OF_RIVER;
             point = [river_node horizontalConstruct:point.x YValue:point.y Length:length Type:0 TileSize:tile_size];
             calc_y = point.y;
-            printf("****LEFT****\n");
+            //printf("****LEFT****\n");
         }
         
         direction_old = direction;
     }
     
     
-    printf("****CALC****:\n X= %f ... Y= %f\n",point.x, point.y);
-    printf("MapSize: %d\n", map_size);
+   // printf("****CALC****:\n X= %f ... Y= %f\n",point.x, point.y);
+    //printf("MapSize: %d\n", map_size);
     
     //Just for testing river
     /*
@@ -113,17 +113,17 @@ int WIDTH_OF_RIVER = 5;
     if((direction == 2) && ((((*length) * tile_size) + point.x) > map_size))
     {
         *length = (map_size - point.x) / tile_size;
-        printf("Map to small: X\n Point.x= %f ... length= %d ... mapsize= %d\n\n", point.x, *length, map_size);
+        //printf("Map to small: X\n Point.x= %f ... length= %d ... mapsize= %d\n\n", point.x, *length, map_size);
     }
     else if((direction == 1) && ((((*length) * tile_size) + point.y) > map_size))
     {
         *length = (map_size - point.y) / tile_size;
-        printf("Map to small: Y\n Point.y= %f ... length= %d ... mapsize= %d\n\n", point.y, *length, map_size);
+        //printf("Map to small: Y\n Point.y= %f ... length= %d ... mapsize= %d\n\n", point.y, *length, map_size);
     }
     else if((direction == 3) && ((point.x - ((*length) * tile_size)) < 0))
     {
         *length = point.x / tile_size;
-        printf("Map to small->0: X\n Point.y= %f ... length= %d ... mapsize= %d\n\n", point.y, *length, map_size);
+        //printf("Map to small->0: X\n Point.y= %f ... length= %d ... mapsize= %d\n\n", point.y, *length, map_size);
     }
 }
 
@@ -182,6 +182,7 @@ int WIDTH_OF_RIVER = 5;
         for(int j = 0; j < WIDTH_OF_RIVER; j++)
         {
             SKSpriteNode *river_sprite = [SKSpriteNode spriteNodeWithTexture:[self.atlas textureNamed:@"Water"]size:CGSizeMake(tile_size, tile_size)];
+            //river_sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:river_sprite.size];
             
             if(type)
               [river_sprite setAnchorPoint:CGPointMake(0.0, 0.0)];
@@ -204,7 +205,7 @@ int WIDTH_OF_RIVER = 5;
     else
     {
       last_point = CGPointMake(x, y);
-      printf("----- LastPoint: %f ... %f\n", last_point.x, last_point.y);
+      //printf("----- LastPoint: %f ... %f\n", last_point.x, last_point.y);
     }
     
     
@@ -224,6 +225,7 @@ int WIDTH_OF_RIVER = 5;
         for(int j = 0; j < WIDTH_OF_RIVER; j++)
         {
             SKSpriteNode *river_sprite = [SKSpriteNode spriteNodeWithTexture:[self.atlas textureNamed:@"Water"]size:CGSizeMake(tile_size, tile_size)];
+            //river_sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:river_sprite.size];
             
             if(type)
               [river_sprite setAnchorPoint:CGPointMake(0.0, 0.0)];
@@ -247,7 +249,7 @@ int WIDTH_OF_RIVER = 5;
     else
     {
         last_point = CGPointMake(x, (y - tile_size * WIDTH_OF_RIVER));
-        printf("----- LastPoint: %f ... %f\n", last_point.x, last_point.y);
+        //printf("----- LastPoint: %f ... %f\n", last_point.x, last_point.y);
     }
 
     return last_point;

@@ -175,6 +175,8 @@
         
         commandOld = command;
     }
+    
+    //castle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 1024)];
 
     return castle;
 }
@@ -221,5 +223,16 @@
     
     return castle;
 }
+
+-(SKSpriteNode*)createCastleNodeWithTexture: (NSString*)texture AtPosition: (CGPoint)position AndAtlas: (SKTextureAtlas*)atlas
+{
+    SKSpriteNode *tower  = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:texture]];
+    tower.anchorPoint = CGPointMake(0, 0);
+    tower.position = position;
+    
+    return tower;
+
+}
+
 
 @end

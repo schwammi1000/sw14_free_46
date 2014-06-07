@@ -19,6 +19,7 @@
     
     //Create Map
     game.map = [PODMapNode createMapWithSize:CGSizeMake(16, 16) Tilesize:CGSizeMake(1024, 1024) Texture:@"DesertXLarge"];
+    [game.map setAnchorPoint:CGPointMake(0, 0)];
     
     //Create Hero
     /*UIColor *color = [UIColor colorWithRed:255 green:0 blue:0 alpha:1];
@@ -31,23 +32,26 @@
     SKTexture *temp = game.hero_walking_frames_down[0];
     game.hero = [SKSpriteNode spriteNodeWithTexture:temp size:CGSizeMake(32, 32)];
     game.hero.anchorPoint = CGPointMake(0, 0);
-    game.hero.position = CGPointMake(384, 512);
+    game.hero.position = CGPointMake(128, 128);
+    game.hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:game.hero.size];
     
     
     //Add River
     [game.map addRiver:[PODRiverNode createRiver:(1024*16)TileSize:32] At:CGPointMake(0, 0)];
     
     //Add Castles
-    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:1] At:CGPointMake(3200, 640)];
-    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:2] At:CGPointMake(3200, 1600)];
-    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:3] At:CGPointMake(3200, 4800)];
+    //[game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:1] At:CGPointMake(0, 0)];
+    //[game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:2] At:CGPointMake(1200, 1600)];
+    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:3] At:CGPointMake(1024, 1024)];
     
-    //game.map.xScale = 0.25; game.map.yScale = 0.25;
+    game.map.xScale = 1; game.map.yScale = 1;
     //game.map.position = CGPointMake(-3200, -4800);
     
     
     [game addChild:game.map];
     [game addChild:game.hero];
+    
+    game.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, 16*1024, 16*1024)];
     
     return game;
 }
@@ -57,23 +61,38 @@
     //self.map.position = CGPointMake(self.map.position.x - movement.dx, self.map.position.y - movement.dy);
     CGPoint point_to_move = CGPointMake(self.map.position.x - movement.dx, self.map.position.y - movement.dy);
     
-    [self.map runAction:[SKAction moveTo:point_to_move duration:0.8f]];
+    //[self.map runAction:[SKAction moveTo:point_to_move duration:0.8f]];
+    
+    int delta = 128;
     
     if(movement.dx > 0)
     {
-        [self.hero runAction:[SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_right timePerFrame:0.2f resize:NO restore:YES] count:1]];
+        SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_right timePerFrame:0.2f resize:NO restore:YES] count:1];
+        SKAction *movement = [SKAction moveByX:delta y:0 duration:1];
+        [self.hero runAction:animation];
+        [self.hero runAction:movement];
+        
     }
     else if(movement.dx < 0)
     {
-       [self.hero runAction:[SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_left timePerFrame:0.2f resize:NO restore:YES] count:1]];
+        SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_left timePerFrame:0.2f resize:NO restore:YES] count:1];
+        SKAction *movement = [SKAction moveByX:-delta y:0 duration:1];
+        [self.hero runAction:animation];
+        [self.hero runAction:movement];
     }
     else if(movement.dy > 0)
     {
-        [self.hero runAction:[SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_up timePerFrame:0.2f resize:NO restore:YES] count:1]];
+        SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_up timePerFrame:0.2f resize:NO restore:YES] count:1];
+        SKAction *movement = [SKAction moveByX:0 y:delta duration:1];
+        [self.hero runAction:animation];
+        [self.hero runAction:movement];
     }
     else if (movement.dy < 0)
     {
-        [self.hero runAction:[SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_down timePerFrame:0.2f resize:NO restore:YES] count:1]];
+        SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_down timePerFrame:0.2f resize:NO restore:YES] count:1];
+        SKAction *movement = [SKAction moveByX:0 y:-delta duration:1];
+        [self.hero runAction:animation];
+        [self.hero runAction:movement];
     }
     
 }
