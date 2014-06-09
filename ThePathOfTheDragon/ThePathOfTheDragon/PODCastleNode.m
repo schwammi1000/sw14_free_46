@@ -226,7 +226,6 @@
 
 -(void)addPart:(SKSpriteNode*) part
 {
-    //part.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:part.size center:CGPointMake(part.size.width/2, part.size.height/2)];
     part.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, part.size.width/2, part.size.height/2)];
     part.physicsBody.affectedByGravity = false;
     part.physicsBody.categoryBitMask = CASTLE;

@@ -35,8 +35,9 @@
         }
     }
     
-    [map setPosition:CGPointMake(0, 0)];
+    [map setAnchorPoint:CGPointMake(0, 0)];
     
+    [map setPosition:CGPointMake(0, 0)];
     [map addChild:map.background];
     [map addChild:map.rivers];
     [map addChild:map.castles];

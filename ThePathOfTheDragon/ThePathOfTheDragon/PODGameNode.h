@@ -10,18 +10,13 @@
 #import "PODMapNode.h"
 #import "PODCastleNode.h"
 #import "PODRiverNode.h"
+#import "PODHero.h"
 
 @interface PODGameNode : SKSpriteNode
 
 @property PODMapNode *map;
-@property SKSpriteNode *hero;
-@property NSArray *hero_walking_frames_left;
-@property NSArray *hero_walking_frames_right;
-@property NSArray *hero_walking_frames_up;
-@property NSArray *hero_walking_frames_down;
-
+@property PODHero *hero;
 
 +(instancetype)createGame;
--(void)moveHeroRelative:(CGVector)movement;
 
 @end

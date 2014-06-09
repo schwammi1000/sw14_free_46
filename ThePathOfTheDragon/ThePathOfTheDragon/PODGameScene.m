@@ -46,7 +46,7 @@ PODCollisionHandling *collisionHandling;
     else
         delta = CGVectorMake(0, 128 * delta.dy/fabs(delta.dy));
     
-    [self.game moveHeroRelative:delta];
+    [self.game.hero moveHeroRelative:delta];
 }
 
 -(void)update:(CFTimeInterval)currentTime
