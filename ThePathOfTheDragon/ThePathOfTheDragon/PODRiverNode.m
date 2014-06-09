@@ -183,6 +183,8 @@ int WIDTH_OF_RIVER = 5;
         {
             SKSpriteNode *river_sprite = [SKSpriteNode spriteNodeWithTexture:[self.atlas textureNamed:@"Water"]size:CGSizeMake(tile_size, tile_size)];
             //river_sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:river_sprite.size];
+            //river_sprite.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, river_sprite.size.width/2, river_sprite.size.height/2)];
+            
             
             if(type)
               [river_sprite setAnchorPoint:CGPointMake(0.0, 0.0)];
@@ -200,6 +202,7 @@ int WIDTH_OF_RIVER = 5;
             if((j == 0) || (j == (WIDTH_OF_RIVER - 1)))
             {
                 //river_sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:river_sprite.size];
+                //river_sprite.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, river_sprite.size.width/2, river_sprite.size.height/2)];
             }
         }
         y += tile_size;
@@ -231,6 +234,7 @@ int WIDTH_OF_RIVER = 5;
         {
             SKSpriteNode *river_sprite = [SKSpriteNode spriteNodeWithTexture:[self.atlas textureNamed:@"Water"]size:CGSizeMake(tile_size, tile_size)];
             //river_sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:river_sprite.size];
+            //river_sprite.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, river_sprite.size.width/2, river_sprite.size.height/2)];
             
             if(type)
               [river_sprite setAnchorPoint:CGPointMake(0.0, 0.0)];
@@ -244,6 +248,7 @@ int WIDTH_OF_RIVER = 5;
             if((j == 0) || (j == (WIDTH_OF_RIVER - 1)))
             {
                 //river_sprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:river_sprite.size];
+                //river_sprite.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, river_sprite.size.width/2, river_sprite.size.height/2)];
             }
         }
         

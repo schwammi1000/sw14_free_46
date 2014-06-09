@@ -64,7 +64,7 @@
                     tower.position = pCurrent;
                     delta = CGVectorMake(0, tower.size.height);
                     pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y + delta.dy);
-                    [castle addChild:tower];
+                    [castle addPart:tower];
                 }
                 
                 SKSpriteNode *node  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallVerticalLong"]];
@@ -72,7 +72,7 @@
                 node.position = CGPointMake(pCurrent.x + 23, pCurrent.y);
                 delta = CGVectorMake(0, node.size.height);
                 pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y + delta.dy);
-                [castle addChild:node];
+                [castle addPart:node];
             }
             else if([command compare:@"d"] == 0)
             {
@@ -81,7 +81,7 @@
                     SKSpriteNode *tower  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"TowerTop"]];
                     tower.anchorPoint = anchor;
                     tower.position = pCurrent;
-                    [castle addChild:tower];
+                    [castle addPart:tower];
                 }
                 
                 SKSpriteNode *node  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallVerticalLong"]];
@@ -98,7 +98,7 @@
                     pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y - delta.dy);
                 }
                 
-                [castle addChild:node];
+                [castle addPart:node];
             }
             else if([command compare:@"r"] == 0)
             {
@@ -120,7 +120,7 @@
                     tower.position = pCurrent;
                     delta = CGVectorMake(tower.size.width, 0);
                     pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y + delta.dy);
-                    [castle addChild:tower];
+                    [castle addPart:tower];
                 }
                 
                 SKSpriteNode *node  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallHorizontal"]];
@@ -128,7 +128,7 @@
                 node.position = CGPointMake(pCurrent.x, pCurrent.y + 32);
                 delta = CGVectorMake(node.size.width, 0);
                 pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y + delta.dy);
-                [castle addChild:node];
+                [castle addPart:node];
                 
             }
             else if([command compare:@"l"] == 0)
@@ -149,7 +149,7 @@
                     
                     tower.anchorPoint = anchor;
                     tower.position = pCurrent;
-                    [castle addChild:tower];
+                    [castle addPart:tower];
                 }
                 
                 SKSpriteNode *node  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallHorizontal"]];
@@ -165,7 +165,7 @@
                     delta = CGVectorMake(node.size.width, 0);
                     pCurrent = CGPointMake(pCurrent.x - delta.dx, pCurrent.y + delta.dy);
                 }
-                [castle addChild:node];
+                [castle addPart:node];
             }
             else if([command compare:@"s"] == 0)
             {
@@ -224,14 +224,21 @@
     return castle;
 }
 
--(SKSpriteNode*)createCastleNodeWithTexture: (NSString*)texture AtPosition: (CGPoint)position AndAtlas: (SKTextureAtlas*)atlas
+-(void)addPart:(SKSpriteNode*) part
 {
-    SKSpriteNode *tower  = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:texture]];
-    tower.anchorPoint = CGPointMake(0, 0);
-    tower.position = position;
+    //part.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:part.size center:CGPointMake(part.size.width/2, part.size.height/2)];
+    part.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, part.size.width/2, part.size.height/2)];
+    part.physicsBody.affectedByGravity = false;
+    part.physicsBody.categoryBitMask = CASTLE;
+    part.physicsBody.collisionBitMask = SPRITE;
+    part.physicsBody.contactTestBitMask = SPRITE | CASTLE;
+    part.physicsBody.dynamic = false;
     
-    return tower;
-
+    SKSpriteNode *blue = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:part.size];
+    blue.position = CGPointMake(blue.position.x + part.size.width/2, blue.position.y + part.size.height/2);
+    [part addChild:blue];
+    
+    [self addChild:part];
 }
 
 

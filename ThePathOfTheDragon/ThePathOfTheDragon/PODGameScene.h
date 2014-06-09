@@ -10,10 +10,10 @@
 #import "PODCastleNode.h"
 #import "PODRiverNode.h"
 #import "PODGameNode.h"
+#import "PODCollisionHandling.h"
 
 @interface PODGameScene : SKScene
 
 @property PODGameNode *game;
-@property SKLabelNode *label;
 
 @end

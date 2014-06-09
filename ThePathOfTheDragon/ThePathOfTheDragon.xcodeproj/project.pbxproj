@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281BC8BB1944538F0032CD38 /* PODCollisionHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BC8BA1944538F0032CD38 /* PODCollisionHandling.m */; };
 		2825D246193A3613009EEC1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2825D245193A3613009EEC1A /* Foundation.framework */; };
 		2825D248193A3613009EEC1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2825D247193A3613009EEC1A /* CoreGraphics.framework */; };
 		2825D24A193A3613009EEC1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2825D249193A3613009EEC1A /* UIKit.framework */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		281BC8B91944538F0032CD38 /* PODCollisionHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODCollisionHandling.h; sourceTree = "<group>"; };
+		281BC8BA1944538F0032CD38 /* PODCollisionHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODCollisionHandling.m; sourceTree = "<group>"; };
 		2825D242193A3613009EEC1A /* ThePathOfTheDragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThePathOfTheDragon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2825D245193A3613009EEC1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2825D247193A3613009EEC1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -108,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		281BC8B8194453700032CD38 /* Collision */ = {
+			isa = PBXGroup;
+			children = (
+				281BC8B91944538F0032CD38 /* PODCollisionHandling.h */,
+				281BC8BA1944538F0032CD38 /* PODCollisionHandling.m */,
+			);
+			name = Collision;
+			sourceTree = "<group>";
+		};
 		2825D239193A3613009EEC1A = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +156,7 @@
 			children = (
 				2825D28D193A3722009EEC1A /* PODAppDelegate.h */,
 				2825D28E193A3722009EEC1A /* PODAppDelegate.m */,
+				281BC8B8194453700032CD38 /* Collision */,
 				2825D283193A3675009EEC1A /* Nodes */,
 				285A00C5193BB9CD00651177 /* Helper */,
 				2825D282193A364D009EEC1A /* View */,
@@ -333,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2825D28C193A3715009EEC1A /* PODViewController.m in Sources */,
+				281BC8BB1944538F0032CD38 /* PODCollisionHandling.m in Sources */,
 				2825D28F193A3722009EEC1A /* PODAppDelegate.m in Sources */,
 				285A00C8193BB9FE00651177 /* PODUtility.m in Sources */,
 				285A00BE193B593600651177 /* PODRiverNode.m in Sources */,
