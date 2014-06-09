@@ -22,7 +22,11 @@ typedef enum Direction {UP, DOWN, LEFT, RIGHT} Direction;
 @property float runningDurationOfOneAnimation;
 @property int nrOfAnimationTextures;
 
+@property CGVector actualMovingDirection;
+
 +(instancetype)createHero;
--(void)moveHeroRelative:(CGVector)movement;
+-(void)moveHero:(CGVector)newMovingDirection;
+-(void)stopHero;
+-(void)changeMovingDirection:(CGVector)newMovingDirection;
 
 @end

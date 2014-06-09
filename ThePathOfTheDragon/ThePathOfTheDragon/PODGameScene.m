@@ -36,17 +36,26 @@ PODCollisionHandling *collisionHandling;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
+    CGVector newMovingDirection = [self calculateNewMovingDirectionWithTouch:touches];
     
-    CGVector delta = CGVectorMake(location.x - self.game.hero.position.x - self.game.position.x, location.y - self.game.hero.position.y - self.game.position.y);
+    [self.game.hero moveHero:newMovingDirection];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGVector newMovingDirection = [self calculateNewMovingDirectionWithTouch:touches];
     
-    if(fabs(delta.dx) >= fabs(delta.dy))
-        delta = CGVectorMake(128 * delta.dx/fabs(delta.dx), 0);
-    else
-        delta = CGVectorMake(0, 128 * delta.dy/fabs(delta.dy));
-    
-    [self.game.hero moveHeroRelative:delta];
+    [self.game.hero changeMovingDirection:newMovingDirection];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.game.hero stopHero];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.game.hero stopHero];
 }
 
 -(void)update:(CFTimeInterval)currentTime
@@ -58,6 +67,20 @@ PODCollisionHandling *collisionHandling;
 -(void)didMoveToView:(SKView *)view
 {
     
+}
+
+-(CGVector)calculateNewMovingDirectionWithTouch:(NSSet *)touches
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint touchlocation = [touch locationInNode:self];
+    CGVector newMovingDirection = CGVectorMake(touchlocation.x - self.game.hero.position.x - self.game.position.x, touchlocation.y - self.game.hero.position.y - self.game.position.y);
+    
+    if(fabs(newMovingDirection.dx) >= fabs(newMovingDirection.dy))
+        newMovingDirection = CGVectorMake(newMovingDirection.dx/fabs(newMovingDirection.dx), 0);
+    else
+        newMovingDirection = CGVectorMake(0, newMovingDirection.dy/fabs(newMovingDirection.dy));
+    
+    return newMovingDirection;
 }
 
 @end

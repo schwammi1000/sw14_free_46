@@ -20,13 +20,14 @@
     
     [hero initalizeWholeAnimation];
     hero.anchorPoint = CGPointMake(0, 0);
-    hero.position = CGPointMake(992, 992);
+    hero.position = CGPointMake(1024, 992);
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size center:CGPointMake(hero.size.width/2, hero.size.height/2)];
     hero.physicsBody.affectedByGravity = false;
     
-    hero.rangeOfOneAnimation = 32;
+    hero.rangeOfOneAnimation = 64;
     hero.nrOfAnimationTextures = 5;
-    hero.runningDurationOfOneAnimation = 0.5;
+    hero.runningDurationOfOneAnimation = 0.25;
+    hero.actualMovingDirection = CGVectorMake(0, 0);
     
     
     return hero;
@@ -40,25 +41,42 @@
     self.hero_walking_frames_right = [self initializeAnimationFromIndex:16 To:20];
 }
 
--(void)moveHeroRelative:(CGVector)movement
+-(void)moveHero:(CGVector)newMovingDirection
 {
-    if(movement.dx > 0)
+    if(newMovingDirection.dx > 0)
         [self animateHeroX:self.rangeOfOneAnimation Y:0 AnimationSet:self.hero_walking_frames_right];
     
-    else if(movement.dx < 0)
+    else if(newMovingDirection.dx < 0)
         [self animateHeroX:-self.rangeOfOneAnimation Y:0 AnimationSet:self.hero_walking_frames_left];
     
-    else if(movement.dy > 0)
+    else if(newMovingDirection.dy > 0)
         [self animateHeroX:0 Y:self.rangeOfOneAnimation AnimationSet:self.hero_walking_frames_up];
     
-    else if (movement.dy < 0)
+    else if (newMovingDirection.dy < 0)
         [self animateHeroX:0 Y:-self.rangeOfOneAnimation AnimationSet:self.hero_walking_frames_down];
+    
+    self.actualMovingDirection = newMovingDirection;
+}
+
+-(void)changeMovingDirection:(CGVector)newMovingDirection
+{
+    if(newMovingDirection.dx == self.actualMovingDirection.dx && newMovingDirection.dy == self.actualMovingDirection.dy)
+        return;
+    
+    [self stopHero];
+    [self moveHero:newMovingDirection];
+    
+}
+
+-(void)stopHero
+{
+    [self removeAllActions];
 }
 
 -(void)animateHeroX:(CGFloat)x Y:(CGFloat)y AnimationSet:(NSArray*)walking
 {
-    SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:walking timePerFrame:self.runningDurationOfOneAnimation/self.nrOfAnimationTextures resize:NO restore:YES] count:10];
-    SKAction *movement = [SKAction repeatAction:[SKAction moveByX:x y:y duration:self.runningDurationOfOneAnimation] count: 10];
+    SKAction *animation = [SKAction repeatActionForever:[SKAction animateWithTextures:walking timePerFrame:self.runningDurationOfOneAnimation/self.nrOfAnimationTextures resize:NO restore:YES]];
+    SKAction *movement = [SKAction repeatActionForever:[SKAction moveByX:x y:y duration:self.runningDurationOfOneAnimation]];
     
     if(![self hasActions])
     {
