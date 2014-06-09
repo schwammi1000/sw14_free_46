@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		281BC8BB1944538F0032CD38 /* PODCollisionHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BC8BA1944538F0032CD38 /* PODCollisionHandling.m */; };
 		281BC8BF194644860032CD38 /* PODHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BC8BE194644860032CD38 /* PODHero.m */; };
+		281BC8C119466A300032CD38 /* PODTestHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BC8C019466A300032CD38 /* PODTestHero.m */; };
 		2825D246193A3613009EEC1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2825D245193A3613009EEC1A /* Foundation.framework */; };
 		2825D248193A3613009EEC1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2825D247193A3613009EEC1A /* CoreGraphics.framework */; };
 		2825D24A193A3613009EEC1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2825D249193A3613009EEC1A /* UIKit.framework */; };
@@ -22,7 +23,6 @@
 		2825D26D193A3614009EEC1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2825D245193A3613009EEC1A /* Foundation.framework */; };
 		2825D26E193A3614009EEC1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2825D249193A3613009EEC1A /* UIKit.framework */; };
 		2825D276193A3614009EEC1A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2825D274193A3614009EEC1A /* InfoPlist.strings */; };
-		2825D278193A3614009EEC1A /* ThePathOfTheDragonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2825D277193A3614009EEC1A /* ThePathOfTheDragonTests.m */; };
 		2825D28C193A3715009EEC1A /* PODViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2825D28B193A3715009EEC1A /* PODViewController.m */; };
 		2825D28F193A3722009EEC1A /* PODAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2825D28E193A3722009EEC1A /* PODAppDelegate.m */; };
 		2825D292193A373A009EEC1A /* PODCastleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2825D291193A373A009EEC1A /* PODCastleNode.m */; };
@@ -50,6 +50,7 @@
 		281BC8BA1944538F0032CD38 /* PODCollisionHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODCollisionHandling.m; sourceTree = "<group>"; };
 		281BC8BD194644860032CD38 /* PODHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODHero.h; sourceTree = "<group>"; };
 		281BC8BE194644860032CD38 /* PODHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODHero.m; sourceTree = "<group>"; };
+		281BC8C019466A300032CD38 /* PODTestHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODTestHero.m; sourceTree = "<group>"; };
 		2825D242193A3613009EEC1A /* ThePathOfTheDragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThePathOfTheDragon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2825D245193A3613009EEC1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2825D247193A3613009EEC1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,7 +67,6 @@
 		2825D26B193A3614009EEC1A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2825D273193A3614009EEC1A /* ThePathOfTheDragonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ThePathOfTheDragonTests-Info.plist"; sourceTree = "<group>"; };
 		2825D275193A3614009EEC1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2825D277193A3614009EEC1A /* ThePathOfTheDragonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThePathOfTheDragonTests.m; sourceTree = "<group>"; };
 		2825D28A193A3715009EEC1A /* PODViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODViewController.h; sourceTree = "<group>"; };
 		2825D28B193A3715009EEC1A /* PODViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODViewController.m; sourceTree = "<group>"; };
 		2825D28D193A3722009EEC1A /* PODAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODAppDelegate.h; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		2825D271193A3614009EEC1A /* ThePathOfTheDragonTests */ = {
 			isa = PBXGroup;
 			children = (
-				2825D277193A3614009EEC1A /* ThePathOfTheDragonTests.m */,
+				281BC8C019466A300032CD38 /* PODTestHero.m */,
 				2825D272193A3614009EEC1A /* Supporting Files */,
 			);
 			path = ThePathOfTheDragonTests;
@@ -362,7 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2825D278193A3614009EEC1A /* ThePathOfTheDragonTests.m in Sources */,
+				281BC8C119466A300032CD38 /* PODTestHero.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

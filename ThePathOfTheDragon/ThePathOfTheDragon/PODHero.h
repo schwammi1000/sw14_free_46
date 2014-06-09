@@ -9,7 +9,10 @@
 #import <SpriteKit/SpriteKit.h>
 #import "PODCollisionHandling.h"
 
-typedef enum Direction {UP, DOWN, LEFT, RIGHT} Direction;
+#define MAX_SPEED 100
+#define MIN_SPEED 20
+
+
 
 @interface PODHero : SKSpriteNode
 
@@ -28,5 +31,7 @@ typedef enum Direction {UP, DOWN, LEFT, RIGHT} Direction;
 -(void)moveHero:(CGVector)newMovingDirection;
 -(void)stopHero;
 -(void)changeMovingDirection:(CGVector)newMovingDirection;
+
+- (void)setSpeed:(int)speed;
 
 @end
