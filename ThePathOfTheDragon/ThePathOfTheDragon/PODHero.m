@@ -18,117 +18,70 @@
     if(hero == nil)
         return nil;
     
-    [hero initalizeHero];
+    [hero initalizeWholeAnimation];
     hero.anchorPoint = CGPointMake(0, 0);
-    hero.position = CGPointMake(128, 128);
+    hero.position = CGPointMake(992, 992);
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size center:CGPointMake(hero.size.width/2, hero.size.height/2)];
     hero.physicsBody.affectedByGravity = false;
-    hero.physicsBody.categoryBitMask = SPRITE;
-    hero.physicsBody.collisionBitMask = CASTLE;
-    hero.physicsBody.contactTestBitMask = SPRITE | CASTLE;
     
-    hero.rangeOfOneClick = 320;
+    hero.rangeOfOneAnimation = 32;
+    hero.nrOfAnimationTextures = 5;
+    hero.runningDurationOfOneAnimation = 0.5;
+    
     
     return hero;
 }
 
--(void)initalizeHero
+-(void)initalizeWholeAnimation
 {
-    NSMutableArray *walking_frame_down = [NSMutableArray array];
-    NSMutableArray *walking_frame_up = [NSMutableArray array];
-    NSMutableArray *walking_frame_left = [NSMutableArray array];
-    NSMutableArray *walking_frame_right = [NSMutableArray array];
-    
-    
-    SKTextureAtlas *hero_walking_atlas = [SKTextureAtlas atlasNamed:@"spriteHero"];
-    
-    //Add animations for down- movement
-    for (int i = 1; i <= 5; i++)
-    {
-        NSString *animation_name = [NSString stringWithFormat:@"animation_%d", i];
-        SKTexture *obj = [hero_walking_atlas textureNamed:animation_name];
-        [walking_frame_down addObject:obj];
-    }
-    self.hero_walking_frames_down = walking_frame_down;
-    
-    
-    //Add animations for up- movement
-    for (int i = 11; i <= 15; i++)
-    {
-        NSString *animation_name = [NSString stringWithFormat:@"animation_%d", i];
-        SKTexture *obj = [hero_walking_atlas textureNamed:animation_name];
-        [walking_frame_up addObject:obj];
-    }
-    self.hero_walking_frames_up = walking_frame_up;
-    
-    
-    //Add animations for left- movement
-    for (int i = 6; i <= 10; i++)
-    {
-        NSString *animation_name = [NSString stringWithFormat:@"animation_%d", i];
-        SKTexture *obj = [hero_walking_atlas textureNamed:animation_name];
-        [walking_frame_left addObject:obj];
-    }
-    self.hero_walking_frames_left = walking_frame_left;
-    
-    
-    //Add animations for right- movement
-    for (int i = 16; i <= 20; i++)
-    {
-        NSString *animation_name = [NSString stringWithFormat:@"animation_%d", i];
-        SKTexture *obj = [hero_walking_atlas textureNamed:animation_name];
-        [walking_frame_right addObject:obj];
-    }
-    self.hero_walking_frames_right = walking_frame_right;
+    self.hero_walking_frames_down  = [self initializeAnimationFromIndex:1  To:5];
+    self.hero_walking_frames_up    = [self initializeAnimationFromIndex:11 To:15];
+    self.hero_walking_frames_left  = [self initializeAnimationFromIndex:6  To:10];
+    self.hero_walking_frames_right = [self initializeAnimationFromIndex:16 To:20];
 }
 
 -(void)moveHeroRelative:(CGVector)movement
 {
     if(movement.dx > 0)
-    {
-        SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_right timePerFrame:0.04f resize:NO restore:YES] count:1];
-        SKAction *movement = [SKAction moveByX:self.rangeOfOneClick y:0 duration:0.2];
-        
-        if(![self hasActions])
-        {
-            [self runAction:animation];
-            [self runAction:movement];
-        }
-    }
+        [self animateHeroX:self.rangeOfOneAnimation Y:0 AnimationSet:self.hero_walking_frames_right];
+    
     else if(movement.dx < 0)
-    {
-        SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_left timePerFrame:0.04f resize:NO restore:YES] count:1];
-        SKAction *movement = [SKAction moveByX:-self.rangeOfOneClick y:0 duration:0.2];
-        
-        if(![self hasActions])
-        {
-            [self runAction:animation];
-            [self runAction:movement];
-        }
-    }
+        [self animateHeroX:-self.rangeOfOneAnimation Y:0 AnimationSet:self.hero_walking_frames_left];
+    
     else if(movement.dy > 0)
-    {
-        SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_up timePerFrame:0.04f resize:NO restore:YES] count:1];
-        SKAction *movement = [SKAction moveByX:0 y:self.rangeOfOneClick duration:0.2];
-        
-        if(![self hasActions])
-        {
-            [self runAction:animation];
-            [self runAction:movement];
-        }
-    }
+        [self animateHeroX:0 Y:self.rangeOfOneAnimation AnimationSet:self.hero_walking_frames_up];
+    
     else if (movement.dy < 0)
+        [self animateHeroX:0 Y:-self.rangeOfOneAnimation AnimationSet:self.hero_walking_frames_down];
+}
+
+-(void)animateHeroX:(CGFloat)x Y:(CGFloat)y AnimationSet:(NSArray*)walking
+{
+    SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:walking timePerFrame:self.runningDurationOfOneAnimation/self.nrOfAnimationTextures resize:NO restore:YES] count:10];
+    SKAction *movement = [SKAction repeatAction:[SKAction moveByX:x y:y duration:self.runningDurationOfOneAnimation] count: 10];
+    
+    if(![self hasActions])
     {
-        SKAction *animation = [SKAction repeatAction:[SKAction animateWithTextures:self.hero_walking_frames_down timePerFrame:0.04f resize:NO restore:YES] count:1];
-        SKAction *movement = [SKAction moveByX:0 y:-self.rangeOfOneClick duration:0.2];
-        
-        if(![self hasActions])
-        {
-            [self runAction:animation];
-            [self runAction:movement];
-        }
+        [self runAction:animation];
+        [self runAction:movement];
     }
     
+    self.texture = walking[0];
+}
+
+-(NSArray*)initializeAnimationFromIndex:(int)from To:(int)to
+{
+    NSMutableArray *walkingFrame = [NSMutableArray array];
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"spriteHero"];
+    
+    for (int i = from; i <= to; i++)
+    {
+        NSString *animation_name = [NSString stringWithFormat:@"animation_%d", i];
+        SKTexture *obj = [atlas textureNamed:animation_name];
+        [walkingFrame addObject:obj];
+    }
+    
+    return walkingFrame;
 }
 
 @end

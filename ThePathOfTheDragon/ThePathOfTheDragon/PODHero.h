@@ -9,6 +9,8 @@
 #import <SpriteKit/SpriteKit.h>
 #import "PODCollisionHandling.h"
 
+typedef enum Direction {UP, DOWN, LEFT, RIGHT} Direction;
+
 @interface PODHero : SKSpriteNode
 
 @property NSArray *hero_walking_frames_left;
@@ -16,7 +18,9 @@
 @property NSArray *hero_walking_frames_up;
 @property NSArray *hero_walking_frames_down;
 
-@property int rangeOfOneClick;
+@property int rangeOfOneAnimation;
+@property float runningDurationOfOneAnimation;
+@property int nrOfAnimationTextures;
 
 +(instancetype)createHero;
 -(void)moveHeroRelative:(CGVector)movement;

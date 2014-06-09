@@ -17,13 +17,21 @@
     if(map == nil)
         return nil;
     
+    //Initialzize category child nodes
     map.background = [[SKNode alloc] init];
     map.rivers = [[SKNode alloc] init];
     map.castles = [[SKNode alloc] init];
     
+    //Add category child nodes
+    [map addChild:map.background];
+    [map addChild:map.rivers];
+    [map addChild:map.castles];
+    
+    //Create map atlas
     map.atlas = [SKTextureAtlas atlasNamed:@"Background"];
     SKTexture *texture = [map.atlas textureNamed:name];
     
+    //Create map
     for(int x = 0; x < mapSize.width; x++)
     {
         for(int y = 0; y < mapSize.height; y++)
@@ -35,12 +43,9 @@
         }
     }
     
+    //Configure map
     [map setAnchorPoint:CGPointMake(0, 0)];
-    
     [map setPosition:CGPointMake(0, 0)];
-    [map addChild:map.background];
-    [map addChild:map.rivers];
-    [map addChild:map.castles];
     
     return map;
 }

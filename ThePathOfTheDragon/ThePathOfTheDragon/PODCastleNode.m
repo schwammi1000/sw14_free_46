@@ -14,7 +14,6 @@
 {
     switch (number)
     {
-        case 0: return [PODCastleNode createExampleCastle];
         case 1: return [PODCastleNode createCastleWithCode:@"u 2 r 2 d 2 l 2"];
         case 2: return [PODCastleNode createCastleWithCode:@"u 2 l 1 u 4 r 6 d 4 l 1 d 2 l 4"];
         case 3: return [PODCastleNode createCastleWithCode:@"u 10 r 1 d 1 r 1 d 1 r 1 d 1 r 2 u 6 l 2 u 2 r 6 d 2 l 2 d 6 r 2 u 1 r 1 u 1 r 1 u 1 r 1 d 10 l 8 d 3 l 5 u 3 l 7"];
@@ -31,7 +30,6 @@
     
     castle.atlas = [SKTextureAtlas atlasNamed:@"Castle"];
     
-    //CGPoint pStart = CGPointMake(0, 0);
     CGPoint pCurrent = CGPointMake(0, 0);
     CGPoint anchor = CGPointMake(0, 0);
     CGVector delta;
@@ -175,52 +173,7 @@
         
         commandOld = command;
     }
-    
-    //castle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1024, 1024)];
 
-    return castle;
-}
-
-+(instancetype)createExampleCastle
-{
-    PODCastleNode *castle = [[PODCastleNode alloc] init];
-    
-    if(castle == nil)
-        return nil;
-    
-    castle.atlas = [SKTextureAtlas atlasNamed:@"Castle"];
-    
-    SKSpriteNode *lu = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"TowerBottom"]];
-    SKSpriteNode *l  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallVerticalLong"]];
-    SKSpriteNode *lo = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"TowerTop"]];
-    SKSpriteNode *o  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallHorizontal"]];
-    SKSpriteNode *ro = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"TowerTop"]];
-    SKSpriteNode *r  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallVerticalLong"]];
-    SKSpriteNode *ru = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"TowerBottom"]];
-    
-    [lu setAnchorPoint:CGPointMake(0, 0)];
-    [l  setAnchorPoint:CGPointMake(0, 0)];
-    [lo setAnchorPoint:CGPointMake(0, 0)];
-    [o  setAnchorPoint:CGPointMake(0, 0)];
-    [ro setAnchorPoint:CGPointMake(0, 0)];
-    [r  setAnchorPoint:CGPointMake(0, 0)];
-    [ru setAnchorPoint:CGPointMake(0, 0)];
-    
-    [l setPosition:CGPointMake(23, lu.size.height)];
-    [lo setPosition:CGPointMake(0, lu.size.height + l.size.height)];
-    [o setPosition:CGPointMake(lo.size.width, lu.size.height + l.size.height + 32)];
-    [ro setPosition:CGPointMake(lo.size.width + o.size.width, lu.size.height + l.size.height)];
-    [r setPosition:CGPointMake(lo.size.width + o.size.width + 23, lu.size.height)];
-    [ru setPosition:CGPointMake(lo.size.width + o.size.width, 0)];
-    
-    [castle addChild:lu];
-    [castle addChild:l];
-    [castle addChild:lo];
-    [castle addChild:o];
-    [castle addChild:ro];
-    [castle addChild:r];
-    [castle addChild:ru];
-    
     return castle;
 }
 
@@ -228,14 +181,7 @@
 {
     part.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, part.size.width/2, part.size.height/2)];
     part.physicsBody.affectedByGravity = false;
-    part.physicsBody.categoryBitMask = CASTLE;
-    part.physicsBody.collisionBitMask = SPRITE;
-    part.physicsBody.contactTestBitMask = SPRITE | CASTLE;
     part.physicsBody.dynamic = false;
-    
-    SKSpriteNode *blue = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:part.size];
-    blue.position = CGPointMake(blue.position.x + part.size.width/2, blue.position.y + part.size.height/2);
-    [part addChild:blue];
     
     [self addChild:part];
 }

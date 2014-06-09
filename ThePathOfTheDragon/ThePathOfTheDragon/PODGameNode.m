@@ -27,15 +27,13 @@
     [game.map addRiver:[PODRiverNode createRiver:(1024*16)TileSize:32] At:CGPointMake(0, 0)];
     
     //Add Castles
-    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:1] At:CGPointMake(0, 0)];
-    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:2] At:CGPointMake(1200, 1600)];
-    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:3] At:CGPointMake(-512, 1024)];
+    [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:3] At:CGPointMake(1024, 1024)];
 
     //Add everything to the map
     [game addChild:game.map];
     [game addChild:game.hero];
     
-    //Create world boundings
+    //Create worlds boundings
     game.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, 16*1024, 16*1024)];
     
     return game;
