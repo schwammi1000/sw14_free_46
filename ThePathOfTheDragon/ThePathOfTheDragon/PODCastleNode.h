@@ -12,6 +12,8 @@
 @interface PODCastleNode : SKNode
 
 @property SKTextureAtlas *atlas;
+@property int nrColor;
+@property CGPoint pCurrent;
 
 +(instancetype)getPreassembledCastleWithNr:(int)number;
 +(instancetype)createCastleWithCode:(NSString *)code;

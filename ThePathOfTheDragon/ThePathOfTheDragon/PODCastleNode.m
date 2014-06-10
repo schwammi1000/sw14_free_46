@@ -23,15 +23,19 @@
 
 +(instancetype)createCastleWithCode:(NSString *)code
 {
+    //Create parent node
     PODCastleNode *castle = [[PODCastleNode alloc] init];
     
     if(castle == nil)
         return nil;
     
+    //Create atlas
     castle.atlas = [SKTextureAtlas atlasNamed:@"Castle"];
     
-    CGPoint pCurrent = CGPointMake(0, 0);
-    CGPoint anchor = CGPointMake(0, 0);
+    castle.nrColor = 1;
+    
+    
+    castle.pCurrent = CGPointMake(0, 0);
     CGVector delta;
     
     NSArray *commands = [code componentsSeparatedByString:@" "];
@@ -42,34 +46,28 @@
     for(NSUInteger i = 0; i < [commands count]; i += 2)
     {
         NSString *command = [commands objectAtIndex:i];
-        NSString *numberOfTiles;
-        int count = 0;
+        int nrTilesToDraw = 0;
         
         if([command compare:@"s"] != 0)
-        {
-            numberOfTiles = [commands objectAtIndex:i+1];
-            count = [numberOfTiles intValue];
-        }
+            nrTilesToDraw = [[commands objectAtIndex:i+1] intValue];
         
-        for(int c = 0; c < count; c++)
+        for(int c = 0; c < nrTilesToDraw; c++)
         {
             if([command compare:@"u"] == 0)
             {
                 if(c == 0)
                 {
                     SKSpriteNode *tower  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"TowerBottom"]];
-                    tower.anchorPoint = anchor;
-                    tower.position = pCurrent;
+                    tower.position = castle.pCurrent;
                     delta = CGVectorMake(0, tower.size.height);
-                    pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y + delta.dy);
+                    castle.pCurrent = CGPointMake(castle.pCurrent.x + delta.dx, castle.pCurrent.y + delta.dy);
                     [castle addPart:tower];
                 }
                 
                 SKSpriteNode *node  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallVerticalLong"]];
-                node.anchorPoint = anchor;
-                node.position = CGPointMake(pCurrent.x + 23, pCurrent.y);
+                node.position = CGPointMake(castle.pCurrent.x + 23, castle.pCurrent.y);
                 delta = CGVectorMake(0, node.size.height);
-                pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y + delta.dy);
+                castle.pCurrent = CGPointMake(castle.pCurrent.x + delta.dx, castle.pCurrent.y + delta.dy);
                 [castle addPart:node];
             }
             else if([command compare:@"d"] == 0)
@@ -77,23 +75,21 @@
                 if(c == 0)
                 {
                     SKSpriteNode *tower  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"TowerTop"]];
-                    tower.anchorPoint = anchor;
-                    tower.position = pCurrent;
+                    tower.position = castle.pCurrent;
                     [castle addPart:tower];
                 }
                 
                 SKSpriteNode *node  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallVerticalLong"]];
-                node.anchorPoint = anchor;
                 
                 if(c == 0)
-                    pCurrent.y = pCurrent.y - node.size.height;
+                    castle.pCurrent = CGPointMake(castle.pCurrent.x, castle.pCurrent.y - node.size.height);
                 
-                node.position = CGPointMake(pCurrent.x + 23, pCurrent.y);
+                node.position = CGPointMake(castle.pCurrent.x + 23, castle.pCurrent.y);
                 
-                if(c != count - 1)
+                if(c != nrTilesToDraw - 1)
                 {
                     delta = CGVectorMake(0, node.size.height);
-                    pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y - delta.dy);
+                    castle.pCurrent = CGPointMake(castle.pCurrent.x + delta.dx, castle.pCurrent.y - delta.dy);
                 }
                 
                 [castle addPart:node];
@@ -111,21 +107,19 @@
                     else
                     {
                         tower  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"TowerBottom"]];
-                        pCurrent.y = pCurrent.y - tower.size.height;
+                        castle.pCurrent = CGPointMake(castle.pCurrent.x, castle.pCurrent.y - tower.size.height);
                     }
                     
-                    tower.anchorPoint = anchor;
-                    tower.position = pCurrent;
+                    tower.position = castle.pCurrent;
                     delta = CGVectorMake(tower.size.width, 0);
-                    pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y + delta.dy);
+                    castle.pCurrent = CGPointMake(castle.pCurrent.x + delta.dx, castle.pCurrent.y + delta.dy);
                     [castle addPart:tower];
                 }
                 
                 SKSpriteNode *node  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallHorizontal"]];
-                node.anchorPoint = anchor;
-                node.position = CGPointMake(pCurrent.x, pCurrent.y + 32);
+                node.position = CGPointMake(castle.pCurrent.x, castle.pCurrent.y + 32);
                 delta = CGVectorMake(node.size.width, 0);
-                pCurrent = CGPointMake(pCurrent.x + delta.dx, pCurrent.y + delta.dy);
+                castle.pCurrent = CGPointMake(castle.pCurrent.x + delta.dx, castle.pCurrent.y + delta.dy);
                 [castle addPart:node];
                 
             }
@@ -142,26 +136,24 @@
                     else
                     {
                         tower  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"TowerBottom"]];
-                        pCurrent.y = pCurrent.y - tower.size.height;
+                        castle.pCurrent = CGPointMake(castle.pCurrent.x, castle.pCurrent.y - tower.size.height);
                     }
                     
-                    tower.anchorPoint = anchor;
-                    tower.position = pCurrent;
+                    tower.position = castle.pCurrent;
                     [castle addPart:tower];
                 }
                 
                 SKSpriteNode *node  = [SKSpriteNode spriteNodeWithTexture:[castle.atlas textureNamed:@"WallHorizontal"]];
-                node.anchorPoint = anchor;
                 
                 if(c == 0)
-                    pCurrent.x = pCurrent.x - node.size.width;
+                    castle.pCurrent = CGPointMake(castle.pCurrent.x - node.size.width, castle.pCurrent.y);
                 
-                node.position = CGPointMake(pCurrent.x, pCurrent.y + 32);
+                node.position = CGPointMake(castle.pCurrent.x, castle.pCurrent.y + 32);
                 
-                if(c != count - 1)
+                if(c != nrTilesToDraw - 1)
                 {
                     delta = CGVectorMake(node.size.width, 0);
-                    pCurrent = CGPointMake(pCurrent.x - delta.dx, pCurrent.y + delta.dy);
+                    castle.pCurrent = CGPointMake(castle.pCurrent.x - delta.dx, castle.pCurrent.y + delta.dy);
                 }
                 [castle addPart:node];
             }
@@ -179,11 +171,41 @@
 
 -(void)addPart:(SKSpriteNode*) part
 {
+    part.anchorPoint = CGPointMake(0, 0);
     part.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, part.size.width/2, part.size.height/2)];
     part.physicsBody.affectedByGravity = false;
     part.physicsBody.dynamic = false;
     
     [self addChild:part];
+    
+    //for debugging
+    UIColor *col = [UIColor blackColor];
+    
+    switch (self.nrColor)
+    {
+        case 1:
+            col = [UIColor redColor];
+            break;
+        case 2:
+            col = [UIColor blueColor];
+            break;
+        case 3:
+            col = [UIColor yellowColor];
+            break;
+        default:
+            break;
+    }
+    
+    self.nrColor++;
+    
+    if(self.nrColor == 4)
+        self.nrColor = 1;
+    
+    SKSpriteNode *helper = [SKSpriteNode spriteNodeWithColor:col size:CGSizeMake(100, 100)];
+    helper.anchorPoint = CGPointMake(0, 0);
+    [part addChild:helper];
+    
+    
 }
 
 
