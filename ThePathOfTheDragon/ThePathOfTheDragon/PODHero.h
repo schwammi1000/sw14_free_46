@@ -25,6 +25,8 @@
 @property float runningDurationOfOneAnimation;
 @property int nrOfAnimationTextures;
 
+@property int attributeSpeed;
+
 @property CGVector actualMovingDirection;
 
 +(instancetype)createHero;

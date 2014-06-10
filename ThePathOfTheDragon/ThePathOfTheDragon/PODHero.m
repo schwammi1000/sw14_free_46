@@ -23,6 +23,7 @@
     hero.position = CGPointMake(1024, 992);
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size center:CGPointMake(hero.size.width/2, hero.size.height/2)];
     hero.physicsBody.affectedByGravity = false;
+    hero.physicsBody.allowsRotation = false;
     
     hero.rangeOfOneAnimation = 48;
     hero.nrOfAnimationTextures = 5;
@@ -103,15 +104,16 @@
     return walkingFrame;
 }
 
-- (void)setSpeed:(int)speed
+- (void)setSpeed:(int)newSpeed
 {
-    if(speed > MAX_SPEED)
-        speed = MAX_SPEED;
-    else if(speed < MIN_SPEED)
-        speed = MIN_SPEED;
+    self.attributeSpeed = newSpeed;
     
-    self.runningDurationOfOneAnimation = -0.8 * speed / 90 + 9.8 / 9;
+    if(newSpeed > MAX_SPEED)
+        self.attributeSpeed = MAX_SPEED;
+    else if(newSpeed < MIN_SPEED)
+        self.attributeSpeed = MIN_SPEED;
     
+    self.runningDurationOfOneAnimation = -0.8 * self.attributeSpeed / 90 + 9.8 / 9;
 }
 
 @end

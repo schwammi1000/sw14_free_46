@@ -36,8 +36,6 @@
     //Create worlds boundings
     game.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, 16*1024, 16*1024)];
     
-    [game.map setScale:0.1];
-    
     return game;
 }
 
