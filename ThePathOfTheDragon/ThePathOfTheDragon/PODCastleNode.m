@@ -16,7 +16,7 @@
     {
         case 1: return [PODCastleNode createCastleWithCode:@"u 2 r 2 d 2 l 2"];
         case 2: return [PODCastleNode createCastleWithCode:@"u 2 l 1 u 4 r 6 d 4 l 1 d 2 l 4"];
-        case 3: return [PODCastleNode createCastleWithCode:@"u 10 r 1 d 1 r 1 d 1 r 1 d 1 r 2 u 6 l 2 u 2 r 10 d 2 l 2 d 6 r 2 u 1 r 1 u 1 r 1 u 1 r 1 d 10 l 22"];
+        case 3: return [PODCastleNode createCastleWithCode:@"l 9 u 10 r 1 d 1 r 1 d 1 r 1 d 1 r 2 u 6 l 2 u 2 r 10 d 2 l 2 d 6 r 2 u 1 r 1 u 1 r 1 u 1 r 1 d 10 l 9 s 1"];
         default: return nil;
     }
 }
@@ -42,7 +42,7 @@
         
         if(i == 0)
             [castle startBuildingToDirection:[castle getDirectionFromString:command]];
-        else
+        else if([command compare:@"s"] != 0)
             [castle buildCornerToDirection:[castle getDirectionFromString:command]];
         
         for(int c = 0; c < nrTilesToDraw; c++)
