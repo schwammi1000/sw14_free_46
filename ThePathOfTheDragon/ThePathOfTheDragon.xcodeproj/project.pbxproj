@@ -32,6 +32,9 @@
 		285A00BE193B593600651177 /* PODRiverNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00BD193B593600651177 /* PODRiverNode.m */; };
 		285A00C1193B9E8800651177 /* PODMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C0193B9E8800651177 /* PODMapNode.m */; };
 		285A00C4193BB4B700651177 /* PODGameNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C3193BB4B700651177 /* PODGameNode.m */; };
+		28994F2719489A28000594F7 /* PODCoinNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 28994F2619489A28000594F7 /* PODCoinNode.m */; };
+		28994F2919489B98000594F7 /* Coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 28994F2819489B98000594F7 /* Coin.atlas */; };
+		28994F2B19489BF9000594F7 /* Muenze.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 28994F2A19489BF9000594F7 /* Muenze.atlas */; };
 		479F2E45193DD5E8001DB1EC /* spriteHero.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 479F2E44193DD5E8001DB1EC /* spriteHero.atlas */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +86,10 @@
 		285A00C0193B9E8800651177 /* PODMapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODMapNode.m; sourceTree = "<group>"; };
 		285A00C2193BB4B700651177 /* PODGameNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODGameNode.h; sourceTree = "<group>"; };
 		285A00C3193BB4B700651177 /* PODGameNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODGameNode.m; sourceTree = "<group>"; };
+		28994F2519489A28000594F7 /* PODCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODCoinNode.h; sourceTree = "<group>"; };
+		28994F2619489A28000594F7 /* PODCoinNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODCoinNode.m; sourceTree = "<group>"; };
+		28994F2819489B98000594F7 /* Coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coin.atlas; sourceTree = "<group>"; };
+		28994F2A19489BF9000594F7 /* Muenze.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Muenze.atlas; sourceTree = "<group>"; };
 		479F2E44193DD5E8001DB1EC /* spriteHero.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = spriteHero.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +188,8 @@
 		2825D24E193A3613009EEC1A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				28994F2A19489BF9000594F7 /* Muenze.atlas */,
+				28994F2819489B98000594F7 /* Coin.atlas */,
 				479F2E44193DD5E8001DB1EC /* spriteHero.atlas */,
 				2825D296193A37BA009EEC1A /* Background.atlas */,
 				2825D297193A37BA009EEC1A /* Castle.atlas */,
@@ -239,6 +248,8 @@
 				285A00C0193B9E8800651177 /* PODMapNode.m */,
 				285A00C2193BB4B700651177 /* PODGameNode.h */,
 				285A00C3193BB4B700651177 /* PODGameNode.m */,
+				28994F2519489A28000594F7 /* PODCoinNode.h */,
+				28994F2619489A28000594F7 /* PODCoinNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -325,7 +336,9 @@
 				479F2E45193DD5E8001DB1EC /* spriteHero.atlas in Resources */,
 				2825D263193A3613009EEC1A /* Spaceship.png in Resources */,
 				2825D298193A37BA009EEC1A /* Background.atlas in Resources */,
+				28994F2B19489BF9000594F7 /* Muenze.atlas in Resources */,
 				2825D25B193A3613009EEC1A /* Main.storyboard in Resources */,
+				28994F2919489B98000594F7 /* Coin.atlas in Resources */,
 				2825D299193A37BA009EEC1A /* Castle.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +367,7 @@
 				281BC8BF194644860032CD38 /* PODHero.m in Sources */,
 				2825D254193A3613009EEC1A /* main.m in Sources */,
 				2825D292193A373A009EEC1A /* PODCastleNode.m in Sources */,
+				28994F2719489A28000594F7 /* PODCoinNode.m in Sources */,
 				2825D295193A3795009EEC1A /* PODGameScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

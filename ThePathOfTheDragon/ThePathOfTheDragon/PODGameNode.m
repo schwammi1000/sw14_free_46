@@ -28,6 +28,9 @@
     
     //Add Castles
     [game.map addCastle:[PODCastleNode getPreassembledCastleWithNr:3] At:CGPointMake(1024, 1024)];
+    
+    //Add Coins
+    [game.map add:500 CoinsWithStartValue:0];
 
     //Add everything to the map
     [game addChild:game.map];
