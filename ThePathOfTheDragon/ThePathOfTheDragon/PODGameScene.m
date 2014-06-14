@@ -31,19 +31,28 @@ PODCollisionHandling *collisionHandling;
     collisionHandling = [[PODCollisionHandling alloc] init];
     self.physicsWorld.contactDelegate = collisionHandling;
     
+    //Create Gamepad
+    self.gamepad = [PODGamePadNode createGamePad];
+    [self addChild:self.gamepad];
+    
+    
     return self;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    CGVector newMovingDirection = [self calculateNewMovingDirectionWithTouch:touches];
+    //CGVector newMovingDirection = [self calculateNewMovingDirectionWithTouch:touches];
+    CGVector newMovingDirection = [self.gamepad calculateNewMovingDirectionWithTouch:touches];
+    [self.gamepad setPositionWithTouch:touches];
     
     [self.game.hero moveHero:newMovingDirection];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    CGVector newMovingDirection = [self calculateNewMovingDirectionWithTouch:touches];
+    //CGVector newMovingDirection = [self calculateNewMovingDirectionWithTouch:touches];
+    CGVector newMovingDirection = [self.gamepad calculateNewMovingDirectionWithTouch:touches];
+    [self.gamepad setPositionWithTouch:touches];
     
     [self.game.hero changeMovingDirection:newMovingDirection];
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281268B3194C5BCC0015A3A4 /* PODGamePadNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 281268B2194C5BCC0015A3A4 /* PODGamePadNode.m */; };
+		281268B5194C5E2A0015A3A4 /* Gamepad.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 281268B4194C5E2A0015A3A4 /* Gamepad.atlas */; };
 		281BC8BB1944538F0032CD38 /* PODCollisionHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BC8BA1944538F0032CD38 /* PODCollisionHandling.m */; };
 		281BC8BF194644860032CD38 /* PODHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BC8BE194644860032CD38 /* PODHero.m */; };
 		281BC8C119466A300032CD38 /* PODTestHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BC8C019466A300032CD38 /* PODTestHero.m */; };
@@ -49,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		281268B1194C5BCC0015A3A4 /* PODGamePadNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODGamePadNode.h; sourceTree = "<group>"; };
+		281268B2194C5BCC0015A3A4 /* PODGamePadNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODGamePadNode.m; sourceTree = "<group>"; };
+		281268B4194C5E2A0015A3A4 /* Gamepad.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gamepad.atlas; sourceTree = "<group>"; };
 		281BC8B91944538F0032CD38 /* PODCollisionHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODCollisionHandling.h; sourceTree = "<group>"; };
 		281BC8BA1944538F0032CD38 /* PODCollisionHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODCollisionHandling.m; sourceTree = "<group>"; };
 		281BC8BD194644860032CD38 /* PODHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODHero.h; sourceTree = "<group>"; };
@@ -188,6 +193,7 @@
 		2825D24E193A3613009EEC1A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				281268B4194C5E2A0015A3A4 /* Gamepad.atlas */,
 				28994F2A19489BF9000594F7 /* Muenze.atlas */,
 				28994F2819489B98000594F7 /* Coin.atlas */,
 				479F2E44193DD5E8001DB1EC /* spriteHero.atlas */,
@@ -250,6 +256,8 @@
 				285A00C3193BB4B700651177 /* PODGameNode.m */,
 				28994F2519489A28000594F7 /* PODCoinNode.h */,
 				28994F2619489A28000594F7 /* PODCoinNode.m */,
+				281268B1194C5BCC0015A3A4 /* PODGamePadNode.h */,
+				281268B2194C5BCC0015A3A4 /* PODGamePadNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -334,6 +342,7 @@
 				2825D252193A3613009EEC1A /* InfoPlist.strings in Resources */,
 				2825D265193A3613009EEC1A /* Images.xcassets in Resources */,
 				479F2E45193DD5E8001DB1EC /* spriteHero.atlas in Resources */,
+				281268B5194C5E2A0015A3A4 /* Gamepad.atlas in Resources */,
 				2825D263193A3613009EEC1A /* Spaceship.png in Resources */,
 				2825D298193A37BA009EEC1A /* Background.atlas in Resources */,
 				28994F2B19489BF9000594F7 /* Muenze.atlas in Resources */,
@@ -369,6 +378,7 @@
 				2825D292193A373A009EEC1A /* PODCastleNode.m in Sources */,
 				28994F2719489A28000594F7 /* PODCoinNode.m in Sources */,
 				2825D295193A3795009EEC1A /* PODGameScene.m in Sources */,
+				281268B3194C5BCC0015A3A4 /* PODGamePadNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

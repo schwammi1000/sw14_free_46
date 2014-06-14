@@ -11,9 +11,11 @@
 #import "PODRiverNode.h"
 #import "PODGameNode.h"
 #import "PODCollisionHandling.h"
+#import "PODGamePadNode.h"
 
 @interface PODGameScene : SKScene
 
 @property PODGameNode *game;
+@property PODGamePadNode *gamepad;
 
 @end
