@@ -21,7 +21,7 @@
 {
     [super setUp];
     
-    self.hero = [PODHero createHero];
+    self.hero = [PODHero createHeroWithNeededCoins:100];
 }
 
 - (void)tearDown

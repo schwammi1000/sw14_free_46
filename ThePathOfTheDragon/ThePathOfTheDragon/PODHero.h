@@ -27,10 +27,11 @@
 
 @property int attributeSpeed;
 @property int coins;
+@property int neededCoins;
 
 @property CGVector actualMovingDirection;
 
-+(instancetype)createHero;
++(instancetype)createHeroWithNeededCoins:(int)possibleCoins;
 -(void)moveHero:(CGVector)newMovingDirection;
 -(void)stopHero;
 -(void)changeMovingDirection:(CGVector)newMovingDirection;

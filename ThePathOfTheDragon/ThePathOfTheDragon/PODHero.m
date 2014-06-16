@@ -11,7 +11,7 @@
 
 @implementation PODHero
 
-+(instancetype)createHero
++(instancetype)createHeroWithNeededCoins:(int)possibleCoins
 {
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"spriteHero"];
     PODHero *hero = [[PODHero alloc] initWithTexture:[atlas textureNamed:@"animation_1"] color:nil size:CGSizeMake(32, 32)];
@@ -35,7 +35,9 @@
     hero.actualMovingDirection = CGVectorMake(0, 0);
     hero.coins = 0;
     
-    [hero setSpeed:70];
+    [hero setSpeed:100];
+    
+    hero.neededCoins = possibleCoins;
     
     return hero;
 }
@@ -124,12 +126,20 @@
 -(void)foundCoin
 {
     self.coins++;
-    //[self setSpeed:self.coins];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"CoinRain" ofType:@"sks"];
     SKEmitterNode *spark = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     spark.position = CGPointMake(self.size.width / 2, self.size.height / 2);
     [self addChild:spark];
+    
+    if(self.coins >= self.neededCoins)
+    {
+        path = [[NSBundle mainBundle] pathForResource:@"Finished" ofType:@"sks"];
+        SKEmitterNode *finished = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        finished.position = CGPointMake(self.size.width / 2, self.size.height * 2);
+        [self addChild:finished];
+        self.physicsBody.dynamic = NO;
+    }
     
 }
 

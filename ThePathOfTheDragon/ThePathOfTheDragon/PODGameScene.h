@@ -20,5 +20,6 @@
 @property PODGameNode *game;
 @property PODGamePadNode *gamepad;
 @property SKLabelNode *scoreLabel;
+@property SKSpriteNode *buttonRestart;
 
 @end

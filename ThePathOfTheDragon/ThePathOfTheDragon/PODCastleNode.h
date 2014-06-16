@@ -18,8 +18,6 @@ typedef enum Direction{UP, DOWN, LEFT, RIGHT} Direction;
 @property SKTextureAtlas *atlas;
 @property CGPoint pCurrent;
 @property Direction currentDirection;
-@property PODBuildHandling *buildHandling;
-@property BOOL buildable;
 
 +(instancetype)getPreassembledCastleWithNr:(int)number;
 +(instancetype)createCastleWithCode:(NSString *)code;

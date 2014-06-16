@@ -16,11 +16,12 @@
     PODGamePadNode *gamepad = [[PODGamePadNode alloc] initWithTexture:[atlas textureNamed:@"Gamepad"]];
     
     gamepad.cursor = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"Cursor"]];
-    
     gamepad.cursor.position = CGPointMake(gamepad.size.width/2, gamepad.size.height/2);
+    gamepad.cursor.zPosition = 100;
     
     gamepad.anchorPoint = CGPointMake(0, 0);
     gamepad.position = CGPointMake(position.x - gamepad.size.width / 2, position.y - gamepad.size.height / 2);
+    gamepad.zPosition = 99;
     
     [gamepad addChild:gamepad.cursor];
     
