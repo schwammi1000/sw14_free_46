@@ -7,15 +7,16 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "PODMapNode.h"
-#import "PODCastleNode.h"
-#import "PODRiverNode.h"
-#import "PODHero.h"
 
 #define TILE_WIDTH 1024
 #define TILE_HEIGHT 1024
 #define NR_TILES_X 16
 #define NR_TILES_Y 16
+
+#import "PODMapNode.h"
+#import "PODCastleNode.h"
+#import "PODRiverNode.h"
+#import "PODHero.h"
 
 @interface PODGameNode : SKSpriteNode
 
@@ -23,6 +24,5 @@
 @property PODHero *hero;
 
 +(instancetype)createGame;
--(BOOL)isBuildable:(SKSpriteNode*) node;
 
 @end

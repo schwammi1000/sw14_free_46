@@ -12,6 +12,8 @@
 
 PODCollisionHandling *collisionHandling;
 
+int nr_coins;
+
 -(id)initWithSize:(CGSize)size
 {
     self = [super initWithSize:size];
@@ -25,23 +27,28 @@ PODCollisionHandling *collisionHandling;
     
     [self addChild:self.game];
     
-    [self.game.map setAnchorPoint:CGPointMake(0, 0)];
-    [self.game.hero setAnchorPoint:CGPointMake(0, 0)];
-    
-    collisionHandling = [[PODCollisionHandling alloc] init];
+    collisionHandling = [[PODCollisionHandling alloc] initWithHero:self.game.hero];
     self.physicsWorld.contactDelegate = collisionHandling;
     
-    //Create Gamepad
-    self.gamepad = [PODGamePadNode createGamePad];
-    [self addChild:self.gamepad];
+    self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"ChalkboardSE-Bold"];
+    self.scoreLabel.fontColor = [UIColor whiteColor];
+    self.scoreLabel.fontSize = 15.0;
+    self.scoreLabel.position = CGPointMake(100, 10);
     
+    [self addChild:self.scoreLabel];
+    
+    nr_coins = self.game.map.coins.children.count;
     
     return self;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //CGVector newMovingDirection = [self calculateNewMovingDirectionWithTouch:touches];
+    UITouch *touch = [touches anyObject];
+    CGPoint touchlocation = [touch locationInNode:self];
+    
+    self.gamepad = [PODGamePadNode createGamePadAtPosition:touchlocation];
+    [self addChild:self.gamepad];
     CGVector newMovingDirection = [self.gamepad calculateNewMovingDirectionWithTouch:touches];
     [self.gamepad setPositionWithTouch:touches];
     
@@ -50,7 +57,6 @@ PODCollisionHandling *collisionHandling;
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //CGVector newMovingDirection = [self calculateNewMovingDirectionWithTouch:touches];
     CGVector newMovingDirection = [self.gamepad calculateNewMovingDirectionWithTouch:touches];
     [self.gamepad setPositionWithTouch:touches];
     
@@ -60,17 +66,21 @@ PODCollisionHandling *collisionHandling;
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.game.hero stopHero];
+    [self.gamepad removeFromParent];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.game.hero stopHero];
+    [self.gamepad removeFromParent];
 }
 
 -(void)update:(CFTimeInterval)currentTime
 {
     CGPoint newPosition = CGPointMake(-self.game.hero.position.x + 384, -self.game.hero.position.y + 512);
     self.game.position = newPosition;
+    NSString *scoreBoard = [NSString stringWithFormat:@"Coins: %d/%d", self.game.hero.coins, nr_coins];
+    self.scoreLabel.text = scoreBoard;
 }
 
 -(void)didMoveToView:(SKView *)view

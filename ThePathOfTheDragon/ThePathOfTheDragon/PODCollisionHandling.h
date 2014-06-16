@@ -10,11 +10,14 @@
 #import <Foundation/Foundation.h>
 
 #define SPRITE (0x01 << 0)
-#define CASTLE (0x01 << 1)
-#define WATER (0x01 << 2)
+#define COIN (0x01 << 1)
+
+@class PODHero;
 
 @interface PODCollisionHandling : NSObject <SKPhysicsContactDelegate>
 
-- (void)didBeginContact:(SKPhysicsContact *)contact;
+@property PODHero *hero;
+
+-(instancetype)initWithHero:(PODHero*)hero;
 
 @end

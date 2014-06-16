@@ -7,13 +7,14 @@
 //
 
 #import "PODHero.h"
+#import "PODCollisionHandling.h"
 
 @implementation PODHero
 
 +(instancetype)createHero
 {
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"spriteHero"];
-    PODHero * hero = [[PODHero alloc] initWithTexture:[atlas textureNamed:@"animation_1"] color:nil size:CGSizeMake(32, 32)];
+    PODHero *hero = [[PODHero alloc] initWithTexture:[atlas textureNamed:@"animation_1"] color:nil size:CGSizeMake(32, 32)];
     
     if(hero == nil)
         return nil;
@@ -24,13 +25,17 @@
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size center:CGPointMake(hero.size.width/2, hero.size.height/2)];
     hero.physicsBody.affectedByGravity = false;
     hero.physicsBody.allowsRotation = false;
+    hero.physicsBody.categoryBitMask = SPRITE;
+    hero.physicsBody.collisionBitMask = COIN;
+    hero.physicsBody.contactTestBitMask = COIN;
     
     hero.rangeOfOneAnimation = 48;
     hero.nrOfAnimationTextures = 5;
     hero.runningDurationOfOneAnimation = 0.8;
     hero.actualMovingDirection = CGVectorMake(0, 0);
+    hero.coins = 0;
     
-    [hero setSpeed:100];
+    [hero setSpeed:70];
     
     return hero;
 }
@@ -114,6 +119,18 @@
         self.attributeSpeed = MIN_SPEED;
     
     self.runningDurationOfOneAnimation = -0.8 * self.attributeSpeed / 90 + 9.8 / 9;
+}
+
+-(void)foundCoin
+{
+    self.coins++;
+    //[self setSpeed:self.coins];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"CoinRain" ofType:@"sks"];
+    SKEmitterNode *spark = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    spark.position = CGPointMake(self.size.width / 2, self.size.height / 2);
+    [self addChild:spark];
+    
 }
 
 @end

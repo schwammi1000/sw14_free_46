@@ -7,16 +7,19 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "PODCollisionHandling.h"
+
+@class PODCollisionHandling;
+@class PODBuildHandling;
 
 typedef enum Direction{UP, DOWN, LEFT, RIGHT} Direction;
 
 @interface PODCastleNode : SKNode
 
 @property SKTextureAtlas *atlas;
-
 @property CGPoint pCurrent;
 @property Direction currentDirection;
+@property PODBuildHandling *buildHandling;
+@property BOOL buildable;
 
 +(instancetype)getPreassembledCastleWithNr:(int)number;
 +(instancetype)createCastleWithCode:(NSString *)code;

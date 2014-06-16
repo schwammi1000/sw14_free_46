@@ -34,9 +34,12 @@
 		285A00BE193B593600651177 /* PODRiverNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00BD193B593600651177 /* PODRiverNode.m */; };
 		285A00C1193B9E8800651177 /* PODMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C0193B9E8800651177 /* PODMapNode.m */; };
 		285A00C4193BB4B700651177 /* PODGameNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A00C3193BB4B700651177 /* PODGameNode.m */; };
+		28717C17194C9AE200D9589C /* PODBuildHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 28717C16194C9AE200D9589C /* PODBuildHandling.m */; };
 		28994F2719489A28000594F7 /* PODCoinNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 28994F2619489A28000594F7 /* PODCoinNode.m */; };
 		28994F2919489B98000594F7 /* Coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 28994F2819489B98000594F7 /* Coin.atlas */; };
 		28994F2B19489BF9000594F7 /* Muenze.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 28994F2A19489BF9000594F7 /* Muenze.atlas */; };
+		28EC24B7194F110F00BB33B1 /* CoinRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28EC24B5194F110F00BB33B1 /* CoinRain.sks */; };
+		28EC24B8194F110F00BB33B1 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 28EC24B6194F110F00BB33B1 /* spark.png */; };
 		479F2E45193DD5E8001DB1EC /* spriteHero.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 479F2E44193DD5E8001DB1EC /* spriteHero.atlas */; };
 /* End PBXBuildFile section */
 
@@ -91,10 +94,14 @@
 		285A00C0193B9E8800651177 /* PODMapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODMapNode.m; sourceTree = "<group>"; };
 		285A00C2193BB4B700651177 /* PODGameNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODGameNode.h; sourceTree = "<group>"; };
 		285A00C3193BB4B700651177 /* PODGameNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODGameNode.m; sourceTree = "<group>"; };
+		28717C15194C9AE200D9589C /* PODBuildHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODBuildHandling.h; sourceTree = "<group>"; };
+		28717C16194C9AE200D9589C /* PODBuildHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODBuildHandling.m; sourceTree = "<group>"; };
 		28994F2519489A28000594F7 /* PODCoinNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODCoinNode.h; sourceTree = "<group>"; };
 		28994F2619489A28000594F7 /* PODCoinNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODCoinNode.m; sourceTree = "<group>"; };
 		28994F2819489B98000594F7 /* Coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coin.atlas; sourceTree = "<group>"; };
 		28994F2A19489BF9000594F7 /* Muenze.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Muenze.atlas; sourceTree = "<group>"; };
+		28EC24B5194F110F00BB33B1 /* CoinRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinRain.sks; sourceTree = "<group>"; };
+		28EC24B6194F110F00BB33B1 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		479F2E44193DD5E8001DB1EC /* spriteHero.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = spriteHero.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +135,8 @@
 			children = (
 				281BC8B91944538F0032CD38 /* PODCollisionHandling.h */,
 				281BC8BA1944538F0032CD38 /* PODCollisionHandling.m */,
+				28717C15194C9AE200D9589C /* PODBuildHandling.h */,
+				28717C16194C9AE200D9589C /* PODBuildHandling.m */,
 			);
 			name = Collision;
 			sourceTree = "<group>";
@@ -175,6 +184,7 @@
 		2825D24D193A3613009EEC1A /* ThePathOfTheDragon */ = {
 			isa = PBXGroup;
 			children = (
+				28EC24A4194F0A4000BB33B1 /* Effects */,
 				2825D28D193A3722009EEC1A /* PODAppDelegate.h */,
 				2825D28E193A3722009EEC1A /* PODAppDelegate.m */,
 				281BC8BC1946446F0032CD38 /* Sprites */,
@@ -262,6 +272,15 @@
 			name = Nodes;
 			sourceTree = "<group>";
 		};
+		28EC24A4194F0A4000BB33B1 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				28EC24B5194F110F00BB33B1 /* CoinRain.sks */,
+				28EC24B6194F110F00BB33B1 /* spark.png */,
+			);
+			name = Effects;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -340,9 +359,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2825D252193A3613009EEC1A /* InfoPlist.strings in Resources */,
+				28EC24B8194F110F00BB33B1 /* spark.png in Resources */,
 				2825D265193A3613009EEC1A /* Images.xcassets in Resources */,
 				479F2E45193DD5E8001DB1EC /* spriteHero.atlas in Resources */,
 				281268B5194C5E2A0015A3A4 /* Gamepad.atlas in Resources */,
+				28EC24B7194F110F00BB33B1 /* CoinRain.sks in Resources */,
 				2825D263193A3613009EEC1A /* Spaceship.png in Resources */,
 				2825D298193A37BA009EEC1A /* Background.atlas in Resources */,
 				28994F2B19489BF9000594F7 /* Muenze.atlas in Resources */,
@@ -373,6 +394,7 @@
 				285A00BE193B593600651177 /* PODRiverNode.m in Sources */,
 				285A00C4193BB4B700651177 /* PODGameNode.m in Sources */,
 				285A00C1193B9E8800651177 /* PODMapNode.m in Sources */,
+				28717C17194C9AE200D9589C /* PODBuildHandling.m in Sources */,
 				281BC8BF194644860032CD38 /* PODHero.m in Sources */,
 				2825D254193A3613009EEC1A /* main.m in Sources */,
 				2825D292193A373A009EEC1A /* PODCastleNode.m in Sources */,

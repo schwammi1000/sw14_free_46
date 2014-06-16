@@ -7,17 +7,34 @@
 //
 
 #import "PODCollisionHandling.h"
+#import "PODHero.h"
 
 @implementation PODCollisionHandling
 
-- (void)didBeginContact:(SKPhysicsContact *)contact
+-(instancetype)initWithHero:(PODHero*)hero
 {
-    NSLog(@"Contact Begin");
+    self = [super init];
+    
+    if(self == nil)
+        return nil;
+    
+    self.hero = hero;
+    
+    return self;
 }
 
-- (void)didEndContact:(SKPhysicsContact *)contact
+- (void)didBeginContact:(SKPhysicsContact *)contact
 {
-    NSLog(@"Contact End");
+    if(contact.bodyA.categoryBitMask == COIN)
+    {
+        [contact.bodyA.node.parent removeFromParent];
+        [self.hero foundCoin];
+    }
+    else if(contact.bodyB.categoryBitMask == COIN)
+    {
+        [contact.bodyB.node.parent removeFromParent];
+        [self.hero foundCoin];
+    }
 }
 
 @end

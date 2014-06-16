@@ -12,7 +12,7 @@
 
 @property SKSpriteNode *cursor;
 
-+(instancetype)createGamePad;
++(instancetype)createGamePadAtPosition:(CGPoint)position;
 -(void)setPositionWithTouch:(NSSet *)touches;
 -(CGVector)calculateNewMovingDirectionWithTouch:(NSSet *)touches;
 

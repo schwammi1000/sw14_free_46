@@ -7,12 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "PODCollisionHandling.h"
+
 
 #define MAX_SPEED 100
 #define MIN_SPEED 20
 
-
+@class PODCollisionHandling;
 
 @interface PODHero : SKSpriteNode
 
@@ -26,6 +26,7 @@
 @property int nrOfAnimationTextures;
 
 @property int attributeSpeed;
+@property int coins;
 
 @property CGVector actualMovingDirection;
 
@@ -33,6 +34,7 @@
 -(void)moveHero:(CGVector)newMovingDirection;
 -(void)stopHero;
 -(void)changeMovingDirection:(CGVector)newMovingDirection;
+-(void)foundCoin;
 
 - (void)setSpeed:(int)speed;
 

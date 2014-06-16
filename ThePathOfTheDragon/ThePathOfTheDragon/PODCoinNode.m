@@ -7,6 +7,7 @@
 //
 
 #import "PODCoinNode.h"
+#import "PODCollisionHandling.h"
 
 @implementation PODCoinNode
 
@@ -32,6 +33,8 @@
     
     coin.physicsBody.affectedByGravity = false;
     coin.physicsBody.dynamic = false;
+    
+    coin.physicsBody.categoryBitMask = COIN;
     
     return coinNode;
 }

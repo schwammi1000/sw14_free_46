@@ -10,7 +10,7 @@
 
 @implementation PODGamePadNode
 
-+(instancetype)createGamePad
++(instancetype)createGamePadAtPosition:(CGPoint)position
 {
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Gamepad"];
     PODGamePadNode *gamepad = [[PODGamePadNode alloc] initWithTexture:[atlas textureNamed:@"Gamepad"]];
@@ -20,14 +20,9 @@
     gamepad.cursor.position = CGPointMake(gamepad.size.width/2, gamepad.size.height/2);
     
     gamepad.anchorPoint = CGPointMake(0, 0);
-    gamepad.position = CGPointMake(500, 50);
+    gamepad.position = CGPointMake(position.x - gamepad.size.width / 2, position.y - gamepad.size.height / 2);
     
     [gamepad addChild:gamepad.cursor];
-    
-    gamepad.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(100, 100, 200, 200)];
-    gamepad.cursor.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:10 center:CGPointMake(10, 10)];
-    gamepad.physicsBody.affectedByGravity = false;
-    gamepad.cursor.physicsBody.affectedByGravity = false;
     
     return gamepad;
 }

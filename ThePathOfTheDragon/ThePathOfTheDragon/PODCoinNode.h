@@ -8,6 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class PODCollisionHandling;
+
 @interface PODCoinNode : SKSpriteNode
 
 +(instancetype)createCoin;

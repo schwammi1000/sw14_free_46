@@ -7,18 +7,36 @@
 //
 
 #import "PODCastleNode.h"
+#import "PODCollisionHandling.h"
+#import "PODBuildHandling.h"
 
 @implementation PODCastleNode
 
 +(instancetype)getPreassembledCastleWithNr:(int)number
 {
+    PODCastleNode *castle;
+    
     switch (number)
     {
-        case 1: return [PODCastleNode createCastleWithCode:@"u 2 r 2 d 2 l 2"];
-        case 2: return [PODCastleNode createCastleWithCode:@"u 2 l 1 u 4 r 6 d 4 l 1 d 2 l 4"];
-        case 3: return [PODCastleNode createCastleWithCode:@"l 9 u 10 r 1 d 1 r 1 d 1 r 1 d 1 r 2 u 6 l 2 u 2 r 10 d 2 l 2 d 6 r 2 u 1 r 1 u 1 r 1 u 1 r 1 d 10 l 9 s 1"];
+        case 1:
+            castle = [PODCastleNode createCastleWithCode:@"u 2 r 2 d 2 l 2"];
+            if(castle.buildable)
+                return castle;
+            break;
+        case 2:
+            castle = [PODCastleNode createCastleWithCode:@"u 2 l 1 u 4 r 6 d 4 l 1 d 2 l 4"];
+            if(castle.buildable)
+                return castle;
+            break;
+        case 3:
+            castle = [PODCastleNode createCastleWithCode:@"l 9 u 10 r 1 d 1 r 1 d 1 r 1 d 1 r 2 u 6 l 2 u 2 r 10 d 2 l 2 d 6 r 2 u 1 r 1 u 1 r 1 u 1 r 1 d 10 l 9 s 1"];
+            if(castle.buildable)
+                return castle;
+            break;
         default: return nil;
     }
+    
+    return nil;
 }
 
 +(instancetype)createCastleWithCode:(NSString *)code
@@ -30,6 +48,9 @@
     
     castle.atlas = [SKTextureAtlas atlasNamed:@"Castle"];
     castle.pCurrent = CGPointMake(0, 0);
+    
+    castle.buildHandling = [[PODBuildHandling alloc] init];
+    castle.buildable = true;
     
     NSArray *commands = [code componentsSeparatedByString:@" "];
     
@@ -233,6 +254,9 @@
     
     castleNode.physicsBody.affectedByGravity = false;
     castleNode.physicsBody.dynamic = false;
+    
+    if(![self.buildHandling isBuildable:castleNode])
+        self.buildable = false;
     
     return castleNode;
 }
