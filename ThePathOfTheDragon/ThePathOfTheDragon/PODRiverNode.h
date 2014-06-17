@@ -11,6 +11,10 @@
 @interface PODRiverNode : SKSpriteNode
 
 @property SKTextureAtlas *atlas;
+@property CGMutablePathRef path_left;
+@property CGMutablePathRef path_right;
+@property SKShapeNode *shape_right;
+@property SKShapeNode *shape_left;
 
 +(instancetype)createRiver: (int)start_point TileSize: (int)tile_size;
 
