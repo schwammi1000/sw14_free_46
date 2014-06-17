@@ -26,4 +26,6 @@
 
 -(void)add:(int)numberCoins CoinsWithStartValue:(int)start;
 
+-(BOOL)possibilityOf:(float)percent;
+
 @end

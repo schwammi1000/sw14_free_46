@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280047DC19501FA9002451D4 /* PODTestCastleNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 280047DB19501FA9002451D4 /* PODTestCastleNode.m */; };
+		280047DE19502172002451D4 /* PODTestMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 280047DD19502172002451D4 /* PODTestMapNode.m */; };
+		280047E019502C01002451D4 /* PODTestGameNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 280047DF19502C01002451D4 /* PODTestGameNode.m */; };
 		281268B3194C5BCC0015A3A4 /* PODGamePadNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 281268B2194C5BCC0015A3A4 /* PODGamePadNode.m */; };
 		281268B5194C5E2A0015A3A4 /* Gamepad.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 281268B4194C5E2A0015A3A4 /* Gamepad.atlas */; };
 		281BC8BB1944538F0032CD38 /* PODCollisionHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 281BC8BA1944538F0032CD38 /* PODCollisionHandling.m */; };
@@ -54,6 +57,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		280047DB19501FA9002451D4 /* PODTestCastleNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODTestCastleNode.m; sourceTree = "<group>"; };
+		280047DD19502172002451D4 /* PODTestMapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODTestMapNode.m; sourceTree = "<group>"; };
+		280047DF19502C01002451D4 /* PODTestGameNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODTestGameNode.m; sourceTree = "<group>"; };
 		281268B1194C5BCC0015A3A4 /* PODGamePadNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODGamePadNode.h; sourceTree = "<group>"; };
 		281268B2194C5BCC0015A3A4 /* PODGamePadNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODGamePadNode.m; sourceTree = "<group>"; };
 		281268B4194C5E2A0015A3A4 /* Gamepad.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Gamepad.atlas; sourceTree = "<group>"; };
@@ -217,7 +223,10 @@
 		2825D271193A3614009EEC1A /* ThePathOfTheDragonTests */ = {
 			isa = PBXGroup;
 			children = (
+				280047DF19502C01002451D4 /* PODTestGameNode.m */,
+				280047DD19502172002451D4 /* PODTestMapNode.m */,
 				281BC8C019466A300032CD38 /* PODTestHero.m */,
+				280047DB19501FA9002451D4 /* PODTestCastleNode.m */,
 				2825D272193A3614009EEC1A /* Supporting Files */,
 			);
 			path = ThePathOfTheDragonTests;
@@ -407,6 +416,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				281BC8C119466A300032CD38 /* PODTestHero.m in Sources */,
+				280047DE19502172002451D4 /* PODTestMapNode.m in Sources */,
+				280047DC19501FA9002451D4 /* PODTestCastleNode.m in Sources */,
+				280047E019502C01002451D4 /* PODTestGameNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

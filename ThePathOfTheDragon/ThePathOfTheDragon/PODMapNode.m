@@ -15,24 +15,21 @@
 {
     srand(time(NULL));
     PODMapNode *map = [[PODMapNode alloc] init];
-    [map setTextureName:name];
+    map.textureName = name;
     
     if(map == nil)
         return nil;
     
-    //Initialzize category child nodes
     map.background = [[SKNode alloc] init];
     map.rivers = [[SKNode alloc] init];
     map.castles = [[SKNode alloc] init];
     map.coins = [[SKNode alloc] init];
     
-    //Add category child nodes
     [map addChild:map.background];
     [map addChild:map.rivers];
     [map addChild:map.castles];
     [map addChild:map.coins];
     
-    //Create map atlas
     map.atlas = [SKTextureAtlas atlasNamed:@"Background"];
     SKTexture *texture = [map.atlas textureNamed:name];
     
@@ -48,9 +45,7 @@
         }
     }
     
-    //Configure map
     [map setAnchorPoint:CGPointMake(0, 0)];
-    [map setPosition:CGPointMake(0, 0)];
     
     return map;
 }
