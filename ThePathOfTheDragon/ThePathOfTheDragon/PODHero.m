@@ -35,7 +35,7 @@
     hero.actualMovingDirection = CGVectorMake(0, 0);
     hero.coins = 0;
     
-    [hero setSpeed:100];
+    [hero setSpeed:70];
     
     hero.neededCoins = possibleCoins;
     

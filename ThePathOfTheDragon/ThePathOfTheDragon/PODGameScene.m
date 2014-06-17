@@ -124,20 +124,6 @@ Boolean active = false;
     
 }
 
--(CGVector)calculateNewMovingDirectionWithTouch:(NSSet *)touches
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint touchlocation = [touch locationInNode:self];
-    CGVector newMovingDirection = CGVectorMake(touchlocation.x - self.game.hero.position.x - self.game.position.x, touchlocation.y - self.game.hero.position.y - self.game.position.y);
-    
-    if(fabs(newMovingDirection.dx) >= fabs(newMovingDirection.dy))
-        newMovingDirection = CGVectorMake(newMovingDirection.dx/fabs(newMovingDirection.dx), 0);
-    else
-        newMovingDirection = CGVectorMake(0, newMovingDirection.dy/fabs(newMovingDirection.dy));
-    
-    return newMovingDirection;
-}
-
 - (SKSpriteNode *)fireButtonNodeWithName:(NSString*)name
 {
     SKSpriteNode *fireNode = [SKSpriteNode spriteNodeWithColor:inactiveColor size:CGSizeMake(400, 30)];

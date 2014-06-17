@@ -11,7 +11,7 @@
 
 @interface PODTestGameNode : XCTestCase
 
-//@property PODG
+@property PODGameNode *game;
 
 @end
 
@@ -20,18 +20,36 @@
 - (void)setUp
 {
     [super setUp];
-    
+    self.game = [PODGameNode createGame];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
 - (void)testCreateGame
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    if(self.game == nil)
+        XCTFail(@"Creating map is no working");
+    
+    if(self.game.anchorPoint.x != 0 || self.game.anchorPoint.y != 0)
+        XCTFail(@"Wrong anchorpoint");
+    
+    if(self.game.position.x != 0 || self.game.position.y != 0)
+        XCTFail(@"Wrong position");
+    
+    if(self.game.hero == nil)
+        XCTFail(@"Did not creat a hero");
+    
+    if(self.game.map.parent != self.game)
+        XCTFail(@"Map is not a child of game");
+    
+    if(self.game.hero.parent != self.game)
+        XCTFail(@"Hero is not a child of game");
+    
+    if(self.game.physicsBody == nil)
+        XCTFail(@"The map has no border");
 }
 
 @end

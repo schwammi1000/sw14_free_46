@@ -46,6 +46,9 @@
     if(self.hero.physicsBody.affectedByGravity == true)
         XCTFail(@"Hero is affected by gravity");
     
+    if(self.hero.neededCoins != 100)
+        XCTFail(@"Number of needed coins is wrong");
+    
     if(self.hero.hero_walking_frames_down == nil ||
        self.hero.hero_walking_frames_up == nil ||
        self.hero.hero_walking_frames_left == nil ||

@@ -39,10 +39,8 @@
     [game addChild:game.map];
     [game addChild:game.hero];
     
-    game.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, 16*1024, 16*1024)];
-    
-    //[game.map setScale:0.05];
-    
+    game.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0, NR_TILES_X * TILE_WIDTH, NR_TILES_Y * TILE_HEIGHT)];
+
     return game;
 }
 
